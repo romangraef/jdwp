@@ -2,9 +2,10 @@ package moe.nea.jdwp.primitives
 
 import moe.nea.jdwp.JDWPComposite
 import moe.nea.jdwp.JDWPPrimitiveVariableSizeLong
+import moe.nea.jdwp.struct.base.JDWPTagConstants
 
 class JDWPValue : JDWPComposite() {
-    var typeTag by useField(JDWPEnum<JDWPTagConstants>())
+    var typeTag by useField(JDWPEnum.ofByteTagged<JDWPTagConstants>())
 
     /**
      * Depending on the value of type tag, contains either an object id, string id, thread id, class loader id, class object id, or array id.

@@ -32,4 +32,8 @@ abstract class JDWPComposite : JDWPElement {
     override fun write(writer: JDWPWriter) {
         _fields.forEach { it.write(writer) }
     }
+
+    override fun toString(): String {
+        return "${this.javaClass.simpleName}{${_fields.joinToString(";")}}"
+    }
 }

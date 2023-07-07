@@ -1,7 +1,9 @@
-package moe.nea.jdwp.primitives
+package moe.nea.jdwp.struct.base
+
+import moe.nea.jdwp.primitives.ByteTagged
 
 enum class JDWPTagConstants(
-    override val byteTag: UByte,
+    override val tag: UByte,
     val descriptor: Char,
     val byteWidth: Int?,
 ) : ByteTagged {

@@ -16,4 +16,11 @@ class ArrayBackedJDWPReader(
         }
         return buffer.copyOfRange(oldOffset, offset)
     }
+
+    override fun peek(length: Int): Pair<JDWPReader, UByteArray> {
+        return Pair(
+            ArrayBackedJDWPReader(buffer, sizes, offset),
+            consume(length)
+        )
+    }
 }
