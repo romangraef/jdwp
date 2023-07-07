@@ -4,11 +4,9 @@ import moe.nea.jdwp.JDWPElement
 
 interface JDWPPayload : JDWPElement
 interface JDWPCommandPayload : JDWPPayload {
-    val commandSet: Byte
-    val command: Byte
+    val reply: JDWPReplyPayload
+    val commandId: Byte
+    val commandSetId: Byte
 }
 
-interface JDWPReplyPayload : JDWPPayload {
-    val inReplyToCommandSet: Byte
-    val inReplyToCommand: Byte
-}
+interface JDWPReplyPayload : JDWPPayload

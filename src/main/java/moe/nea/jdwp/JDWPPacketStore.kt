@@ -1,7 +1,7 @@
 package moe.nea.jdwp
 
-import moe.nea.jdwp.struct.base.JDWPPacket
+import moe.nea.jdwp.struct.base.JDWPCommandPayload
 
 interface JDWPPacketStore {
-    fun makeUninitializedPacket(commandSet: Byte, command: Byte): JDWPPacket
+    fun makeUninitializedPayload(commandSet: Byte, command: Byte): JDWPCommandPayload?
 }
