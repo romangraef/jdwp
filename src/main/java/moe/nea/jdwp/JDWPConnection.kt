@@ -2,7 +2,10 @@
 
 package moe.nea.jdwp
 
+import moe.nea.jdwp.primitives.JDWPHandshake
 import moe.nea.jdwp.struct.base.*
+import java.net.InetSocketAddress
+import java.net.Socket
 
 class JDWPConnection private constructor(
     val reader: JDWPReader,
@@ -15,6 +18,16 @@ class JDWPConnection private constructor(
          */
         fun fromInitialized(reader: JDWPReader, writer: JDWPWriter, packetStore: JDWPPacketStore) =
             JDWPConnection(reader, writer, packetStore)
+
+        fun connect(inetSocketAddress: InetSocketAddress, packetStore: JDWPPacketStore) {
+            val socket = Socket(inetSocketAddress.address, inetSocketAddress.port)
+            val reader = JDWPInputStreamReader(socket.getInputStream())
+            val writer = JDWPOutputStreamWriter(socket.getOutputStream())
+            JDWPHandshake.write(writer)
+            JDWPHandshake.read(reader)
+            val connection = JDWPConnection(reader, writer, packetStore)
+
+        }
     }
 
     fun setSizes(sizes: JDWPIDSizes) {
