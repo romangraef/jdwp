@@ -28,4 +28,7 @@ class JDWPVector<T : Any>(
         }
     }
 
+    override fun toString(): String {
+        return "JDWPVector($size; $value)"
+    }
 }

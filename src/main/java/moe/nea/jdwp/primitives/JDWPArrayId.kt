@@ -8,4 +8,8 @@ class JDWPArrayId private constructor(val delegate: JDWPPrimitiveVariableSizeLon
     JDWPSingleContainer<Long> by delegate {
     constructor() : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::objectIdSize))
     constructor(value: Long) : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::objectIdSize, value))
+
+    override fun toString(): String {
+        return "JDWPArrayId($value)"
+    }
 }

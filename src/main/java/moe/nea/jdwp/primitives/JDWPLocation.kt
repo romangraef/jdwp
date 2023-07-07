@@ -3,8 +3,8 @@ package moe.nea.jdwp.primitives
 import moe.nea.jdwp.JDWPComposite
 
 class JDWPLocation : JDWPComposite() {
-    val locationClassKind by useField(JDWPEnum<JDWPTypeTag>())
-    val locationClass by useField(JDWPClassId())
-    val locationMethod by useField(JDWPMethodId())
-    val locationIndex by useField(JDWPByte())
+    var locationClassKind by useField(JDWPEnum<JDWPTypeTag>())
+    var locationClass by useField(JDWPClassId())
+    var locationMethod by useField(JDWPMethodId())
+    var locationIndex by useField(JDWPByte())
 }

@@ -4,7 +4,7 @@ import moe.nea.jdwp.JDWPComposite
 import moe.nea.jdwp.JDWPPrimitiveVariableSizeLong
 
 class JDWPValue : JDWPComposite() {
-    val typeTag by useField(JDWPEnum<JDWPTagConstants>())
+    var typeTag by useField(JDWPEnum<JDWPTagConstants>())
 
     /**
      * Depending on the value of type tag, contains either an object id, string id, thread id, class loader id, class object id, or array id.
@@ -17,5 +17,5 @@ class JDWPValue : JDWPComposite() {
      * @see Float.toBits
      * @see Float.Companion.fromBits
      */
-    val reference: Long by useField(JDWPPrimitiveVariableSizeLong { typeTag.byteWidth ?: it.objectIdSize })
+    var reference: Long by useField(JDWPPrimitiveVariableSizeLong { typeTag.byteWidth ?: it.objectIdSize })
 }

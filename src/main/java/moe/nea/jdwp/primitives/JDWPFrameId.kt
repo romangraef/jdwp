@@ -6,4 +6,8 @@ class JDWPFrameId private constructor(val delegate: JDWPPrimitiveVariableSizeLon
     JDWPSingleContainer<Long> by delegate {
     constructor() : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::frameIdSize))
     constructor(value: Long) : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::frameIdSize, value))
+
+    override fun toString(): String {
+        return "JDWPFrameId($value)"
+    }
 }

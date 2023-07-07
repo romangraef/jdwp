@@ -8,4 +8,8 @@ class JDWPInterfaceId private constructor(val delegate: JDWPPrimitiveVariableSiz
     JDWPSingleContainer<Long> by delegate {
     constructor() : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::referenceTypeIdSize))
     constructor(value: Long) : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::referenceTypeIdSize, value))
+
+    override fun toString(): String {
+        return "JDWPInterfaceId($value)"
+    }
 }

@@ -6,7 +6,11 @@ import moe.nea.jdwp.JDWPReader
 import moe.nea.jdwp.JDWPSingleState
 import moe.nea.jdwp.JDWPWriter
 
-class JDWPString : JDWPSingleState<String>() {
+class JDWPString() : JDWPSingleState<String>() {
+    constructor(value: String) : this() {
+        this.value = value
+    }
+
     private val sizeDelegate = JDWPInt()
     override fun read(reader: JDWPReader) {
         sizeDelegate.read(reader)
@@ -14,8 +18,9 @@ class JDWPString : JDWPSingleState<String>() {
     }
 
     override fun write(writer: JDWPWriter) {
-        sizeDelegate.value = value!!.length
+        val encoded = value!!.encodeToByteArray().toUByteArray()
+        sizeDelegate.value = encoded.size
         sizeDelegate.write(writer)
-        writer.append(value!!.encodeToByteArray().toUByteArray())
+        writer.append(encoded)
     }
 }

@@ -7,6 +7,6 @@ interface JDWPSingleContainer<T : Any> : JDWPElement {
 abstract class JDWPSingleState<T : Any> : JDWPSingleContainer<T> {
     override var value: T? = null
     override fun toString(): String {
-        return "${this::javaClass}($value)"
+        return "${this.javaClass.simpleName}($value)"
     }
 }

@@ -8,4 +8,8 @@ class JDWPMethodId private constructor(val delegate: JDWPPrimitiveVariableSizeLo
     JDWPSingleContainer<Long> by delegate {
     constructor() : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::methodIdSize))
     constructor(value: Long) : this(JDWPPrimitiveVariableSizeLong(JDWPIDSizes::methodIdSize, value))
+
+    override fun toString(): String {
+        return "JDWPMethodId($value)"
+    }
 }

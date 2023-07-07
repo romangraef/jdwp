@@ -34,6 +34,8 @@ internal class JDWPPrimitiveTest {
                 JDWPByte(10),
                 JDWPInt(-1),
                 JDWPInt(256),
+                JDWPString("testString"),
+                JDWPString("中国高于一切")
             ) + listOf<Long>(
                 0,
                 10,

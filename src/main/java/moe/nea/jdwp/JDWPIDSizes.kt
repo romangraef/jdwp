@@ -1,6 +1,16 @@
+@file:OptIn(ExperimentalUnsignedTypes::class)
+
 package moe.nea.jdwp
 
-class JDWPIDSizes {
+class JDWPIDSizes() : JDWPElement {
+    fun setFrom(sizes: JDWPIDSizes) {
+        this.fieldIdSize = sizes.fieldIdSize
+        this.methodIdSize = sizes.methodIdSize
+        this.objectIdSize = sizes.objectIdSize
+        this.referenceTypeIdSize = sizes.referenceTypeIdSize
+        this.frameIdSize = sizes.frameIdSize
+    }
+
     companion object {
         fun standardSizes() = JDWPIDSizes().also {
             it.fieldIdSize = 8
@@ -36,5 +46,26 @@ class JDWPIDSizes {
             if (field == 0) error("Accessing uninitialized Frame Id size despite")
             return field
         }
+
+    override fun read(reader: JDWPReader) {
+        val (fi, m, o, r, fr) = reader.consume(5)
+        fieldIdSize = fi.toInt()
+        methodIdSize = m.toInt()
+        objectIdSize = o.toInt()
+        referenceTypeIdSize = r.toInt()
+        frameIdSize = fr.toInt()
+    }
+
+    override fun write(writer: JDWPWriter) {
+        writer.append(
+            ubyteArrayOf(
+                fieldIdSize.toUByte(),
+                methodIdSize.toUByte(),
+                objectIdSize.toUByte(),
+                referenceTypeIdSize.toUByte(),
+                frameIdSize.toUByte(),
+            )
+        )
+    }
 
 }
