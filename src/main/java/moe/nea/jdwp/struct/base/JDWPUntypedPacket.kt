@@ -2,6 +2,6 @@
 
 package moe.nea.jdwp.struct.base
 
-class JDWPUntypedPacket : JDWPPacket() {
+class JDWPUntypedPacket(header: PacketHeader = PacketHeader()) : JDWPPacket(header) {
     var contents by this::_contents
 }

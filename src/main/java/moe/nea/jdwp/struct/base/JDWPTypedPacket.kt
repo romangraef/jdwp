@@ -4,9 +4,7 @@ package moe.nea.jdwp.struct.base
 
 import moe.nea.jdwp.*
 
-class JDWPTypedPacket<T : JDWPElement>(val constructor: () -> T) : JDWPPacket() {
-    var contents = constructor()
-
+class JDWPTypedPacket<T : JDWPPayload>(var contents: T, header: PacketHeader = PacketHeader()) : JDWPPacket(header) {
     override fun read(reader: JDWPReader) {
         super.read(reader)
         contents.read(ArrayBackedJDWPReader(_contents, reader.sizes))

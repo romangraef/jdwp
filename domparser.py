@@ -201,8 +201,8 @@ class Emitter:
         for element in composite.children:
             if isinstance(element, CommandBaseMeta):
                 self.emit_line("override val reply = " + name + "Reply()")
-                self.emit_line("override val commandId: Byte get() = " + str(element.command_id))
-                self.emit_line("override val commandSetId: Byte get() = " + str(element.command_set_id))
+                self.emit_line("override val commandId: UByte get() = " + str(element.command_id) + ".toUByte()")
+                self.emit_line("override val commandSetId: UByte get() = " + str(element.command_set_id) + ".toUByte()")
                 continue
             use_site = self.child_emitter().emit_element(element)
             self.emit_docs(element)
@@ -224,7 +224,8 @@ if __name__ == '__main__':
     emitter.emit_root_imports()
     emitter.emit_docs(command_to_do.docs)
     command_to_do.request.children.append(CommandBaseMeta(command_to_do.parent.set_id, command_to_do.command_id))
-    emitter.emit_element(command_to_do.request, name_hint=command_to_do.name, interfaces=["JDWPCommandPayload"])
+    emitter.emit_element(command_to_do.request, name_hint=command_to_do.name,
+                         interfaces=["JDWPCommandPayload<" + command_to_do.name + "Reply>"])
     emitter.emit_docs("Reply for [" + command_to_do.name + "]")
     emitter.emit_element(command_to_do.reply, name_hint=command_to_do.name + "Reply",
                          interfaces=["JDWPReplyPayload"])

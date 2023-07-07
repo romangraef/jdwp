@@ -17,6 +17,10 @@ class ArrayBackedJDWPReader(
         return buffer.copyOfRange(oldOffset, offset)
     }
 
+    fun assertConsumed() {
+        require(offset == buffer.size)
+    }
+
     override fun peek(length: Int): Pair<JDWPReader, UByteArray> {
         return Pair(
             ArrayBackedJDWPReader(buffer, sizes, offset),

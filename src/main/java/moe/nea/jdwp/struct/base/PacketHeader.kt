@@ -4,6 +4,8 @@ import moe.nea.jdwp.JDWPComposite
 import moe.nea.jdwp.primitives.JDWPByte
 import moe.nea.jdwp.primitives.JDWPInt
 import moe.nea.jdwp.primitives.JDWPShort
+import kotlin.experimental.and
+import kotlin.experimental.or
 
 class PacketHeader : JDWPComposite() {
     companion object {
@@ -15,8 +17,19 @@ class PacketHeader : JDWPComposite() {
      */
     var length by useField(JDWPInt(11))
     var replyId by useField(JDWPInt())
-    var flags by useField(JDWPByte())
-    var commandOrErrorCode by useField(JDWPShort())
+    var flags by useField(JDWPByte(0.toUByte()))
+    var commandOrErrorCode by useField(JDWPShort(0))
+
+    var commandSetId: UByte
+        get() = commandOrErrorCode.toUByte()
+        set(value) {
+            commandOrErrorCode = (commandOrErrorCode and 0xFF00.toShort()) or value.toShort()
+        }
+    var commandId: UByte
+        get() = (commandOrErrorCode.toUInt() shr 8).toUByte()
+        set(value) {
+            commandOrErrorCode = (commandOrErrorCode and 0x00FF.toShort()) or (value.toUInt() shl 8).toShort()
+        }
 
     var isReply: Boolean
         get() = (flags and 0x80.toUByte()) != 0.toUByte()

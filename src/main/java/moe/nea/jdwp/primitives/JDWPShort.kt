@@ -6,7 +6,11 @@ import moe.nea.jdwp.JDWPReader
 import moe.nea.jdwp.JDWPSingleState
 import moe.nea.jdwp.JDWPWriter
 
-class JDWPShort : JDWPSingleState<Short>() {
+class JDWPShort() : JDWPSingleState<Short>() {
+    constructor(default: Short = 0) : this() {
+        this.value = default
+    }
+
     override fun read(reader: JDWPReader) {
         val bytes = reader.consume(2)
         value = ((bytes[0].toUInt() shl 8) or (bytes[0].toUInt())).toUShort().toShort()
