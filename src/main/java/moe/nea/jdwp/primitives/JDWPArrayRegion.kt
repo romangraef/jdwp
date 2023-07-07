@@ -5,5 +5,9 @@ import moe.nea.jdwp.JDWPPrimitiveVariableSizeLong
 
 class JDWPArrayRegion : JDWPComposite() {
     val typeTag by useField(JDWPEnum<JDWPTagConstants>())
-    val elements = JDWPVector(JDWPInt(), JDWPPrimitiveVariableSizeLong { typeTag.byteWidth ?: it.objectIdSize })
+    val elements by useField(
+        JDWPVector(
+            JDWPInt(),
+            JDWPPrimitiveVariableSizeLong { typeTag.byteWidth ?: it.objectIdSize })
+    )
 }
