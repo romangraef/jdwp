@@ -1,1 +1,1 @@
-rootProject.name = "jdwp"
+rootProject.name = "jdwp-protocol-lib"
