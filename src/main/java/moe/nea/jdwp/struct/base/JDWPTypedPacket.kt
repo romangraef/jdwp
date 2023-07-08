@@ -16,4 +16,8 @@ class JDWPTypedPacket<T : JDWPPayload>(var contents: T, header: PacketHeader = P
         _contents = payloadWriter.getResult()
         super.write(writer)
     }
+
+    override fun toString(): String {
+        return "JDWPTypedPacket<${contents.javaClass.simpleName}>($header) {$contents}"
+    }
 }

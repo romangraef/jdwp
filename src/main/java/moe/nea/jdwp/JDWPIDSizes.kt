@@ -2,6 +2,8 @@
 
 package moe.nea.jdwp
 
+import moe.nea.jdwp.struct.virtualmachine.IDSizesReply
+
 class JDWPIDSizes() : JDWPElement {
     fun setFrom(sizes: JDWPIDSizes) {
         this.fieldIdSize = sizes.fieldIdSize
@@ -9,6 +11,14 @@ class JDWPIDSizes() : JDWPElement {
         this.objectIdSize = sizes.objectIdSize
         this.referenceTypeIdSize = sizes.referenceTypeIdSize
         this.frameIdSize = sizes.frameIdSize
+    }
+
+    fun setFrom(idSizesReply: IDSizesReply) {
+        this.fieldIdSize = idSizesReply.fieldIDSize
+        this.methodIdSize = idSizesReply.methodIDSize
+        this.objectIdSize = idSizesReply.objectIDSize
+        this.referenceTypeIdSize = idSizesReply.referenceTypeIDSize
+        this.frameIdSize = idSizesReply.frameIDSize
     }
 
     companion object {

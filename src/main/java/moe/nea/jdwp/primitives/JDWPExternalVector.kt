@@ -31,7 +31,7 @@ class JDWPExternalVector<T : Any>(
 
     override fun read(reader: JDWPReader) {
         val length = sizeGetter()
-        (0 until length).map {
+        value = (0 until length).map {
             element.read(reader)
             element.value!!
         }

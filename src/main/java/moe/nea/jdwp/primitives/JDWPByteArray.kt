@@ -5,6 +5,7 @@ package moe.nea.jdwp.primitives
 import moe.nea.jdwp.JDWPReader
 import moe.nea.jdwp.JDWPSingleContainer
 import moe.nea.jdwp.JDWPWriter
+import java.util.*
 import kotlin.reflect.KMutableProperty0
 
 class JDWPByteArray(val sizeGetter: () -> Int, val sizeSetter: (Int) -> Unit) : JDWPSingleContainer<UByteArray> {
@@ -24,5 +25,9 @@ class JDWPByteArray(val sizeGetter: () -> Int, val sizeSetter: (Int) -> Unit) : 
 
     override fun write(writer: JDWPWriter) {
         writer.append(value!!)
+    }
+
+    override fun toString(): String {
+        return "JDWPByteArray(${Arrays.toString(value?.toByteArray())})"
     }
 }

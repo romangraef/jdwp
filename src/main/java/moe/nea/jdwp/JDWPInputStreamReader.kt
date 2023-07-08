@@ -6,7 +6,7 @@ import java.io.Closeable
 import java.io.InputStream
 
 class JDWPInputStreamReader(inputStream: InputStream) : JDWPReader, Closeable {
-    private val backingStream = inputStream.buffered()
+    private val backingStream = inputStream
     override val sizes: JDWPIDSizes = JDWPIDSizes()
     override fun close() {
         backingStream.close()

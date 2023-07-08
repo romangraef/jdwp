@@ -4,6 +4,7 @@ package moe.nea.jdwp
 
 import moe.nea.jdwp.primitives.JDWPHandshake
 import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.struct.virtualmachine.IDSizes
 import java.net.InetSocketAddress
 import java.net.Socket
 
@@ -19,14 +20,26 @@ class JDWPConnection private constructor(
         fun fromInitialized(reader: JDWPReader, writer: JDWPWriter, packetStore: JDWPPacketStore) =
             JDWPConnection(reader, writer, packetStore)
 
-        fun connect(inetSocketAddress: InetSocketAddress, packetStore: JDWPPacketStore) {
-            val socket = Socket(inetSocketAddress.address, inetSocketAddress.port)
-            val reader = JDWPInputStreamReader(socket.getInputStream())
+        fun connect(
+            inetSocketAddress: InetSocketAddress,
+            packetStore: JDWPPacketStore,
+            initSizes: Boolean = true
+        ): JDWPConnection {
+            val socket = Socket()
+            socket.connect(inetSocketAddress)
             val writer = JDWPOutputStreamWriter(socket.getOutputStream())
             JDWPHandshake.write(writer)
+            writer.flush()
+            val reader = JDWPInputStreamReader(socket.getInputStream())
             JDWPHandshake.read(reader)
             val connection = JDWPConnection(reader, writer, packetStore)
-
+            if (initSizes) {
+                val r = connection.sendCommand(IDSizes())
+                val idSizes = r.match(connection.receiveCommandOrReply())
+                    ?: error("Server responded out of sync instead of with id sizes during init")
+                connection.setSizes(JDWPIDSizes().also { it.setFrom(idSizes) })
+            }
+            return connection
         }
     }
 
@@ -38,13 +51,23 @@ class JDWPConnection private constructor(
     private var replyId = 0
     private var awaitingRepliesFromServer = mutableMapOf<Int, JDWPReplyPayload>()
 
-    fun <T : JDWPCommandPayload<*>> sendCommand(payload: T) {
+    data class ReplyToken<N : JDWPReplyPayload> internal constructor(val replyId: Int) {
+        fun match(packet: JDWPPacket): N? {
+            if (packet is JDWPTypedPacket<*> && packet.header.isReply && packet.header.replyId == replyId) {
+                return packet.contents as N
+            }
+            return null
+        }
+    }
+
+    fun <T : JDWPCommandPayload<N>, N : JDWPReplyPayload> sendCommand(payload: T): ReplyToken<N> {
         val packet = JDWPTypedPacket(payload)
         packet.header.replyId = replyId++
         packet.header.commandSetId = payload.commandSetId
         packet.header.commandId = payload.commandId
         awaitingRepliesFromServer[packet.header.replyId] = payload.reply
         packet.write(writer)
+        return ReplyToken(packet.header.replyId)
     }
 
 
@@ -88,21 +111,25 @@ class JDWPConnection private constructor(
         packet.write(writer)
     }
 
+    fun <N : JDWPReplyPayload> awaitReplyBlocking(replyToken: ReplyToken<N>): N {
+        return replyToken.match(receiveCommandOrReply())!!
+    }
+
     fun receiveCommandOrReply(): JDWPPacket {
         val header = PacketHeader()
         header.read(reader)
         val extra = reader.consume(header.length - PacketHeader.PACKET_HEADER_SIZE)
-        return if (header.isReply) {
+        if (header.isReply) {
             val replyModel = awaitingRepliesFromServer.remove(header.replyId)
             if (replyModel != null) {
-                if (header.errorCode != JDWPErrorCode.NONE) {
+                if (header.errorCode == JDWPErrorCode.NONE) {
                     val extraReader = ArrayBackedJDWPReader(extra, reader.sizes)
                     replyModel.read(extraReader)
                     extraReader.assertConsumed()
                 }
-                JDWPTypedPacket(replyModel, header)
+                return JDWPTypedPacket(replyModel, header)
             } else {
-                JDWPUntypedPacket(header).also { it.contents = extra }
+                return JDWPUntypedPacket(header).also { it.contents = extra }
             }
         } else {
             val commandModel = packetStore.makeUninitializedPayload(header.commandSetId, header.commandId)
@@ -110,9 +137,9 @@ class JDWPConnection private constructor(
                 val extraReader = ArrayBackedJDWPReader(extra, reader.sizes)
                 commandModel.read(extraReader)
                 extraReader.assertConsumed()
-                JDWPTypedPacket(commandModel, header)
+                return JDWPTypedPacket(commandModel, header)
             } else {
-                JDWPUntypedPacket(header).also { it.contents = extra }
+                return JDWPUntypedPacket(header).also { it.contents = extra }
             }
         }
     }

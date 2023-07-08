@@ -20,12 +20,12 @@ class PacketHeader : JDWPComposite() {
     var flags by useField(JDWPByte(0.toUByte()))
     var commandOrErrorCode by useField(JDWPShort(0))
 
-    var commandSetId: UByte
+    var commandId: UByte
         get() = commandOrErrorCode.toUByte()
         set(value) {
             commandOrErrorCode = (commandOrErrorCode and 0xFF00.toShort()) or value.toShort()
         }
-    var commandId: UByte
+    var commandSetId: UByte
         get() = (commandOrErrorCode.toUInt() shr 8).toUByte()
         set(value) {
             commandOrErrorCode = (commandOrErrorCode and 0x00FF.toShort()) or (value.toUInt() shl 8).toShort()

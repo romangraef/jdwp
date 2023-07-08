@@ -7,12 +7,16 @@ import java.io.OutputStream
 
 class JDWPOutputStreamWriter(outputStream: OutputStream) : JDWPWriter, Closeable {
     override val sizes: JDWPIDSizes = JDWPIDSizes()
-    private val backingStream = outputStream.buffered()
+    private val backingStream = outputStream
     override fun append(byteArray: UByteArray, offset: Int, length: Int) {
         backingStream.write(byteArray.toByteArray(), offset, length)
     }
 
     override fun close() {
         backingStream.close()
+    }
+
+    fun flush() {
+        backingStream.flush()
     }
 }
