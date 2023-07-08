@@ -1,6 +1,7 @@
 import dataclasses
 import re
 import typing
+from pathlib import Path
 
 import bs4.element
 from bs4 import BeautifulSoup
@@ -69,7 +70,12 @@ def read_jdwp_element_table(dd_element) -> JDWPElement:
     for row in rows:
         if not row.name: continue
         el = row.findChildren(recursive=False)
-        indent = re.match('indent(\\d)', el[0].get('class', ''))
+        first_child = el[0].findChildren("div")
+        if first_child:
+            first_child = first_child[0]
+        else:
+            first_child = {}
+        indent = re.match('indent(\\d)', ' '.join(first_child.get('class', [])))
         indent = int(indent.group(1)) if indent else 0
         while indent + 1 < len(element_stack):
             del element_stack[-1]
@@ -141,14 +147,17 @@ def next_element_name() -> str:
 
 
 class Emitter:
-    def __init__(self):
+    def __init__(self, context_prefix: str):
         self.stream = ""
+        self.context_prefix = context_prefix
+        self.is_failing = False
         self.also: typing.List['Emitter'] = []
         self.indent = 0
 
     def finish(self):
         for a in self.also:
             self.stream += "\n" + a.finish()
+            self.is_failing = self.is_failing or a.is_failing
         return self.stream
 
     def emit_line(self, line: str = ""):
@@ -171,31 +180,47 @@ class Emitter:
         self.emit_line()
 
     def child_emitter(self) -> 'Emitter':
-        emitter = Emitter()
+        emitter = Emitter(self.context_prefix)
         self.also.append(emitter)
         return emitter
 
-    def emit_element(self, element: JDWPElement, name_hint: str = None, interfaces: typing.List[str] = []) -> str:
+    def emit_element(self, element: JDWPElement, name_hint: str = None, interfaces: typing.List[str] = []) -> (
+            bool, str):
         if not name_hint:
             name_hint = next_class_name()
         if element == "todo":
-            return "TODO()"
+            self.is_failing = True
+            return (False, "TODO()")
         if isinstance(element, Composite):
-            return self.emit_composite(name_hint, element, interfaces)
+            return (False, self.emit_composite(name_hint, element, interfaces))
         if isinstance(element, Repetition):
-            repetition_site = self.emit_composite(element.by.title() + "Element", Composite(element.children))
-            return "JDWPExternalVector(this::" + element.by + ", " + repetition_site + ")"
+            repetition_site = self.emit_composite(
+                self.context_prefix + element.by[0].upper() + element.by[1:] + "Element",
+                Composite(element.children), ref_usesite=True)
+            return (True, "JDWPExternalVector(this::" + element.by + ", " + repetition_site + ")")
         if isinstance(element, Primitive):
-            return "JDWP" + re.sub('ID$', 'Id', element.typ.title()) + "()"
+            if element.typ == "value":
+                return (False, "JDWPValue()")
+            if element.typ == "tagged-objectID":
+                return (False, "JDWPTaggedObjectId()")
+            if element.typ == "location":
+                return (False, "JDWPLocation()")
+            if element.typ == "arrayregion":
+                return (False, "JDWPArrayRegion()")
+            return (True, "JDWP" + re.sub('-(.)', lambda x: x.group(1).upper(),
+                                          re.sub('ID$', 'Id', element.typ[0].upper() + element.typ[1:])) + "()")
 
     def get_name(self, element: JDWPElement):
         if hasattr(element, "name"):
+            if element.name == "object":
+                return "`object`"
             return element.name
         if hasattr(element, 'by'):
             return element.by + 'Elements'
         return next_element_name()
 
-    def emit_composite(self, name: str, composite: Composite, interfaces: typing.List[str] = []):
+    def emit_composite(self, name: str, composite: Composite, interfaces: typing.List[str] = [],
+                       ref_usesite: bool = False) -> str:
         self.emit_line("class " + name + " : " + ', '.join(['JDWPComposite()'] + interfaces) + " {")
         self.indent += 1
         for element in composite.children:
@@ -204,11 +229,13 @@ class Emitter:
                 self.emit_line("override val commandId: UByte get() = " + str(element.command_id) + ".toUByte()")
                 self.emit_line("override val commandSetId: UByte get() = " + str(element.command_set_id) + ".toUByte()")
                 continue
-            use_site = self.child_emitter().emit_element(element)
+            mutable, use_site = self.child_emitter().emit_element(element)
             self.emit_docs(element)
-            self.emit_line("val " + self.get_name(element) + " by useField(" + use_site + ")")
+            self.emit_line(("var " if mutable else "val ") + self.get_name(element) + " by useField(" + use_site + ")")
         self.indent -= 1
         self.emit_line('}')
+        if ref_usesite:
+            return "::" + name
         return name + "()"
 
     def emit_package_declaration(self, package: str):
@@ -218,15 +245,22 @@ class Emitter:
 
 if __name__ == '__main__':
     struct = main()
-    emitter = Emitter()
-    command_to_do = struct[0].children[0]
-    emitter.emit_package_declaration("moe.nea.jdwp.struct." + command_to_do.parent.name.lower())
-    emitter.emit_root_imports()
-    emitter.emit_docs(command_to_do.docs)
-    command_to_do.request.children.append(CommandBaseMeta(command_to_do.parent.set_id, command_to_do.command_id))
-    emitter.emit_element(command_to_do.request, name_hint=command_to_do.name,
-                         interfaces=["JDWPCommandPayload<" + command_to_do.name + "Reply>"])
-    emitter.emit_docs("Reply for [" + command_to_do.name + "]")
-    emitter.emit_element(command_to_do.reply, name_hint=command_to_do.name + "Reply",
-                         interfaces=["JDWPReplyPayload"])
-    print(emitter.finish())
+    for command_set in struct:
+        for command in command_set.children:
+            emitter = Emitter(command.name)
+            emitter.emit_package_declaration("moe.nea.jdwp.struct." + command.parent.name.lower())
+            emitter.emit_root_imports()
+            emitter.emit_docs(command.docs)
+            if hasattr(command.request, "children"):
+                command.request.children.append(
+                    CommandBaseMeta(command.parent.set_id, command.command_id))
+            emitter.emit_element(command.request, name_hint=command.name,
+                                 interfaces=["JDWPCommandPayload<" + command.name + "Reply>"])
+            emitter.emit_docs("Reply for [" + command.name + "]")
+            emitter.emit_element(command.reply, name_hint=command.name + "Reply",
+                                 interfaces=["JDWPReplyPayload"])
+            file = Path("src/main/java/moe/nea/jdwp/struct/") / command.parent.name.lower() / (command.name + ".kt")
+            file.parent.mkdir(exist_ok=True, parents=True)
+            file.write_text(emitter.finish(), encoding='utf-8')
+            if emitter.is_failing:
+                print(f"Failing for {command.name} in {command.parent.name} in {file}")

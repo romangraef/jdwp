@@ -6,7 +6,7 @@ import kotlin.reflect.KProperty
 
 abstract class JDWPComposite : JDWPElement {
     private val _fields: MutableList<JDWPElement> = mutableListOf()
-    val fields: List<JDWPElement> get() = _fields
+    val allFields: List<JDWPElement> get() = _fields
     protected fun <T : JDWPElement> useField(primitive: T): ReadOnlyProperty<JDWPComposite, T> {
         _fields.add(primitive)
         return ReadOnlyProperty { _, _ -> primitive }

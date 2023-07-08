@@ -1,5 +1,6 @@
 package moe.nea.jdwp.primitives
 
+import moe.nea.jdwp.JDWPElement
 import moe.nea.jdwp.JDWPReader
 import moe.nea.jdwp.JDWPSingleContainer
 import moe.nea.jdwp.JDWPWriter
@@ -14,6 +15,13 @@ class JDWPExternalVector<T : Any>(
 ) : JDWPSingleContainer<List<T>> {
     constructor(prop: KMutableProperty0<Int>, element: JDWPSingleContainer<T>) :
             this(prop, prop::set, element)
+
+    companion object {
+        operator fun <T> invoke(prop: KMutableProperty0<Int>, newElement: () -> T): JDWPExternalVector<T>
+                where T : JDWPElement {
+            return JDWPExternalVector(prop, JDWPConstructorContainer(newElement))
+        }
+    }
 
     override var value: List<T>? = null
         set(value) {

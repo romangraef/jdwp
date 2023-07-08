@@ -1,5 +1,5 @@
 package moe.nea.jdwp.primitives
 
-class JDWPUntaggedValue {
-    // TODO
-}
+import moe.nea.jdwp.JDWPSingleContainer
+
+class JDWPUntaggedValue : JDWPSingleContainer<Long> by JDWPLong()
