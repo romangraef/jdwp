@@ -40,7 +40,7 @@
             </a>
     </div>
     <div>
-04a0d9d    </div>
+1.0.0    </div>
     <div class="pull-right d-flex">
         <div class="filter-section" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
@@ -58,6 +58,7 @@
   <div class="breadcrumbs"><a href="../../index.html">JDWP-ProtocolLib</a><span class="delimiter">/</span><span class="current">moe.nea.jdwp.struct.objectreference</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><p class="paragraph">This package implements the <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference">ObjectReference Command Set</a></p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
@@ -74,7 +75,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-disable-collection/index.html">DisableCollection</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-disable-collection-reply/index.html">DisableCollectionReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Prevents garbage collection for the given object. By default all objects in back-end replies may be collected at any time the target VM is running. A call to this command guarantees that the object will not be collected. The  command can be used to allow collection once again. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_DisableCollection">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-disable-collection/index.html">DisableCollection</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-disable-collection-reply/index.html">DisableCollectionReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Prevents garbage collection for the given object. By default all objects in back-end replies may be collected at any time the target VM is running. A call to this command guarantees that the object will not be collected. The  command can be used to allow collection once again. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_DisableCollection">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -89,7 +90,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-disable-collection-reply/index.html">DisableCollectionReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-disable-collection/index.html">DisableCollection</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-disable-collection-reply/index.html">DisableCollectionReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-disable-collection/index.html">DisableCollection</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -104,7 +105,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enable-collection/index.html">EnableCollection</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-enable-collection-reply/index.html">EnableCollectionReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Permits garbage collection for this object. By default all objects returned by JDWP may become unreachable in the target VM, and hence may be garbage collected. A call to this command is necessary only if garbage collection was previously disabled with the  command. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_EnableCollection">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enable-collection/index.html">EnableCollection</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-enable-collection-reply/index.html">EnableCollectionReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Permits garbage collection for this object. By default all objects returned by JDWP may become unreachable in the target VM, and hence may be garbage collected. A call to this command is necessary only if garbage collection was previously disabled with the  command. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_EnableCollection">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -119,7 +120,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enable-collection-reply/index.html">EnableCollectionReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-enable-collection/index.html">EnableCollection</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enable-collection-reply/index.html">EnableCollectionReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-enable-collection/index.html">EnableCollection</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,7 +135,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values/index.html">GetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-get-values-reply/index.html">GetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be obtained. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_GetValues">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values/index.html">GetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-get-values-reply/index.html">GetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be obtained. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_GetValues">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -164,7 +165,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values-reply/index.html">GetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-get-values/index.html">GetValues</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values-reply/index.html">GetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-get-values/index.html">GetValues</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invoke-method/index.html">InvokeMethod</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-invoke-method-reply/index.html">InvokeMethodReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Invokes a instance method. The method must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, private methods can be invoked. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_InvokeMethod">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invoke-method/index.html">InvokeMethod</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-invoke-method-reply/index.html">InvokeMethodReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Invokes a instance method. The method must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, private methods can be invoked. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_InvokeMethod">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -224,7 +225,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invoke-method-reply/index.html">InvokeMethodReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-invoke-method/index.html">InvokeMethod</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invoke-method-reply/index.html">InvokeMethodReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-invoke-method/index.html">InvokeMethod</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -239,7 +240,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-collected/index.html">IsCollected</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-is-collected-reply/index.html">IsCollectedReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Determines whether an object has been garbage collected in the target VM. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_IsCollected">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-collected/index.html">IsCollected</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-is-collected-reply/index.html">IsCollectedReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Determines whether an object has been garbage collected in the target VM. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_IsCollected">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -254,7 +255,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-collected-reply/index.html">IsCollectedReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-is-collected/index.html">IsCollected</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-collected-reply/index.html">IsCollectedReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-is-collected/index.html">IsCollected</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -269,7 +270,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-monitor-info/index.html">MonitorInfo</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-monitor-info-reply/index.html">MonitorInfoReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_MonitorInfo">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-monitor-info/index.html">MonitorInfo</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-monitor-info-reply/index.html">MonitorInfoReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_MonitorInfo">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -284,7 +285,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-monitor-info-reply/index.html">MonitorInfoReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-monitor-info/index.html">MonitorInfo</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-monitor-info-reply/index.html">MonitorInfoReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-monitor-info/index.html">MonitorInfo</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -314,7 +315,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-reference-type/index.html">ReferenceType</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-reference-type-reply/index.html">ReferenceTypeReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the runtime type of the object. The runtime type will be a class or an array. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferenceType">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-reference-type/index.html">ReferenceType</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-reference-type-reply/index.html">ReferenceTypeReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the runtime type of the object. The runtime type will be a class or an array. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferenceType">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -329,7 +330,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-reference-type-reply/index.html">ReferenceTypeReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-reference-type/index.html">ReferenceType</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-reference-type-reply/index.html">ReferenceTypeReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-reference-type/index.html">ReferenceType</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -344,7 +345,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-referring-objects/index.html">ReferringObjects</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-referring-objects-reply/index.html">ReferringObjectsReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns objects that directly reference this object.  Only objects that are reachable for the purposes of garbage collection are returned. Note that an object can also be referenced in other ways, such as from a local variable in a stack frame, or from a JNI global reference.  Such non-object referrers are not returned by this command. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferringObjects">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-referring-objects/index.html">ReferringObjects</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-referring-objects-reply/index.html">ReferringObjectsReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns objects that directly reference this object.  Only objects that are reachable for the purposes of garbage collection are returned. Note that an object can also be referenced in other ways, such as from a local variable in a stack frame, or from a JNI global reference.  Such non-object referrers are not returned by this command. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferringObjects">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -359,7 +360,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-referring-objects-reply/index.html">ReferringObjectsReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-referring-objects/index.html">ReferringObjects</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-referring-objects-reply/index.html">ReferringObjectsReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-referring-objects/index.html">ReferringObjects</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -389,7 +390,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values/index.html">SetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-set-values-reply/index.html">SetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Sets the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be set. For primitive values, the value's type must match the field's type exactly. For object values, there must be a widening reference conversion from the value's type to thefield's type and the field's type must be loaded. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_SetValues">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values/index.html">SetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-set-values-reply/index.html">SetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Sets the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be set. For primitive values, the value's type must match the field's type exactly. For object values, there must be a widening reference conversion from the value's type to thefield's type and the field's type must be loaded. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_SetValues">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -404,7 +405,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values-reply/index.html">SetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-set-values/index.html">SetValues</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values-reply/index.html">SetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-set-values/index.html">SetValues</a></p></div></div></div>
                 </div>
               </div>
             </div>

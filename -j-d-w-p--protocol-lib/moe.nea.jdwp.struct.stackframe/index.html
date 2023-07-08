@@ -40,7 +40,7 @@
             </a>
     </div>
     <div>
-04a0d9d    </div>
+1.0.0    </div>
     <div class="pull-right d-flex">
         <div class="filter-section" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
@@ -58,6 +58,7 @@
   <div class="breadcrumbs"><a href="../../index.html">JDWP-ProtocolLib</a><span class="delimiter">/</span><span class="current">moe.nea.jdwp.struct.stackframe</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><p class="paragraph">This package implements the <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame">StackFrame Command Set</a></p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
@@ -74,7 +75,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values/index.html">GetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-get-values-reply/index.html">GetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of one or more local variables in a given frame. Each variable must be visible at the frame's code index. Even if local variable information is not available, values can be retrieved if the front-end is able to determine the correct local variable index. (Typically, this index can be determined for method arguments from the method signature without access to the local variable table information.) <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_GetValues">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values/index.html">GetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-get-values-reply/index.html">GetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of one or more local variables in a given frame. Each variable must be visible at the frame's code index. Even if local variable information is not available, values can be retrieved if the front-end is able to determine the correct local variable index. (Typically, this index can be determined for method arguments from the method signature without access to the local variable table information.) <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_GetValues">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -89,7 +90,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values-reply/index.html">GetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-get-values/index.html">GetValues</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-get-values-reply/index.html">GetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-get-values/index.html">GetValues</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,7 +135,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pop-frames/index.html">PopFrames</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-pop-frames-reply/index.html">PopFramesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Pop the top-most stack frames of the thread stack, up to, and including 'frame'. The thread must be suspended to perform this command. The top-most stack frames are discarded and the stack frame previous to 'frame' becomes the current frame. The operand stack is restored -- the argument values are added back and if the invoke was not ,  is added back as well. The Java virtual machine program counter is restored to the opcode of the invoke instruction. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_PopFrames">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pop-frames/index.html">PopFrames</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-pop-frames-reply/index.html">PopFramesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Pop the top-most stack frames of the thread stack, up to, and including 'frame'. The thread must be suspended to perform this command. The top-most stack frames are discarded and the stack frame previous to 'frame' becomes the current frame. The operand stack is restored -- the argument values are added back and if the invoke was not ,  is added back as well. The Java virtual machine program counter is restored to the opcode of the invoke instruction. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_PopFrames">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -149,7 +150,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pop-frames-reply/index.html">PopFramesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-pop-frames/index.html">PopFrames</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pop-frames-reply/index.html">PopFramesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-pop-frames/index.html">PopFrames</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -164,7 +165,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values/index.html">SetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-set-values-reply/index.html">SetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Sets the value of one or more local variables. Each variable must be visible at the current frame code index. For primitive values, the value's type must match the variable's type exactly. For object values, there must be a widening reference conversion from the value's type to thevariable's type and the variable's type must be loaded. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_SetValues">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values/index.html">SetValues</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-set-values-reply/index.html">SetValuesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Sets the value of one or more local variables. Each variable must be visible at the current frame code index. For primitive values, the value's type must match the variable's type exactly. For object values, there must be a widening reference conversion from the value's type to thevariable's type and the variable's type must be loaded. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_SetValues">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -179,7 +180,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values-reply/index.html">SetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-set-values/index.html">SetValues</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-set-values-reply/index.html">SetValuesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-set-values/index.html">SetValues</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -209,7 +210,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-this-object/index.html">ThisObject</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-this-object-reply/index.html">ThisObjectReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of the 'this' reference for this frame. If the frame's method is static or native, the reply will contain the null object reference. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_ThisObject">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-this-object/index.html">ThisObject</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-this-object-reply/index.html">ThisObjectReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns the value of the 'this' reference for this frame. If the frame's method is static or native, the reply will contain the null object reference. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_ThisObject">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -224,7 +225,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-this-object-reply/index.html">ThisObjectReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-this-object/index.html">ThisObject</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-this-object-reply/index.html">ThisObjectReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-this-object/index.html">ThisObject</a></p></div></div></div>
                 </div>
               </div>
             </div>

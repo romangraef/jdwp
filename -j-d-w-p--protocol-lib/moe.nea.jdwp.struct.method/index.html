@@ -40,7 +40,7 @@
             </a>
     </div>
     <div>
-04a0d9d    </div>
+1.0.0    </div>
     <div class="pull-right d-flex">
         <div class="filter-section" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
@@ -58,6 +58,7 @@
   <div class="breadcrumbs"><a href="../../index.html">JDWP-ProtocolLib</a><span class="delimiter">/</span><span class="current">moe.nea.jdwp.struct.method</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><p class="paragraph">This package implements the <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method">Method Command Set</a></p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
@@ -74,7 +75,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bytecodes/index.html">Bytecodes</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-bytecodes-reply/index.html">BytecodesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Retrieve the method's bytecodes as defined in . Requires canGetBytecodes capability - see . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_Bytecodes">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bytecodes/index.html">Bytecodes</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-bytecodes-reply/index.html">BytecodesReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Retrieve the method's bytecodes as defined in . Requires canGetBytecodes capability - see . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_Bytecodes">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -89,7 +90,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bytecodes-reply/index.html">BytecodesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-bytecodes/index.html">Bytecodes</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bytecodes-reply/index.html">BytecodesReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-bytecodes/index.html">Bytecodes</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -119,7 +120,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-obsolete/index.html">IsObsolete</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-is-obsolete-reply/index.html">IsObsoleteReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Determine if this method is obsolete. A method is obsolete if it has been replaced by a non-equivalent method using the  command. The original and redefined methods are considered equivalent if their bytecodes are the same except for indices into the constant pool and the referenced constants are equal. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_IsObsolete">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-obsolete/index.html">IsObsolete</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-is-obsolete-reply/index.html">IsObsoleteReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Determine if this method is obsolete. A method is obsolete if it has been replaced by a non-equivalent method using the  command. The original and redefined methods are considered equivalent if their bytecodes are the same except for indices into the constant pool and the referenced constants are equal. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_IsObsolete">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,7 +135,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-obsolete-reply/index.html">IsObsoleteReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-is-obsolete/index.html">IsObsolete</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-is-obsolete-reply/index.html">IsObsoleteReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-is-obsolete/index.html">IsObsolete</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -149,7 +150,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-table/index.html">LineTable</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-line-table-reply/index.html">LineTableReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns line number information for the method, if present. The line table maps source line numbers to the initial code index of the line. The line table is ordered by code index (from lowest to highest). The line number information is constant unless a new class definition is installed using . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_LineTable">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-table/index.html">LineTable</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-line-table-reply/index.html">LineTableReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns line number information for the method, if present. The line table maps source line numbers to the initial code index of the line. The line table is ordered by code index (from lowest to highest). The line number information is constant unless a new class definition is installed using . <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_LineTable">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -164,7 +165,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-table-reply/index.html">LineTableReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-line-table/index.html">LineTable</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-line-table-reply/index.html">LineTableReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-line-table/index.html">LineTable</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table/index.html">VariableTable</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-variable-table-reply/index.html">VariableTableReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns variable information for the method. The variable table includes arguments and locals declared within the method. For instance methods, the &quot;this&quot; reference is included in the table. Also, synthetic variables may be present. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTable">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table/index.html">VariableTable</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-variable-table-reply/index.html">VariableTableReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns variable information for the method. The variable table includes arguments and locals declared within the method. For instance methods, the &quot;this&quot; reference is included in the table. Also, synthetic variables may be present. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTable">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -209,7 +210,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-reply/index.html">VariableTableReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-variable-table/index.html">VariableTable</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-reply/index.html">VariableTableReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-variable-table/index.html">VariableTable</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -239,7 +240,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-with-generic/index.html">VariableTableWithGeneric</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-variable-table-with-generic-reply/index.html">VariableTableWithGenericReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns variable information for the method, including generic signatures for the variables. The variable table includes arguments and locals declared within the method. For instance methods, the &quot;this&quot; reference is included in the table. Also, synthetic variables may be present. Generic signatures are described in the signature attribute section in . Since JDWP version 1.5. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTableWithGeneric">External</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-with-generic/index.html">VariableTableWithGeneric</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-command-payload/index.html">JDWPCommandPayload</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-variable-table-with-generic-reply/index.html">VariableTableWithGenericReply</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Returns variable information for the method, including generic signatures for the variables. The variable table includes arguments and locals declared within the method. For instance methods, the &quot;this&quot; reference is included in the table. Also, synthetic variables may be present. Generic signatures are described in the signature attribute section in . Since JDWP version 1.5. <a href="https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTableWithGeneric">External</a></p></div></div></div>
                 </div>
               </div>
             </div>
@@ -254,7 +255,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-with-generic-reply/index.html">VariableTableWithGenericReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.struct.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-variable-table-with-generic/index.html">VariableTableWithGeneric</a></p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-variable-table-with-generic-reply/index.html">VariableTableWithGenericReply</a> : <a href="../moe.nea.jdwp/-j-d-w-p-composite/index.html">JDWPComposite</a>, <a href="../moe.nea.jdwp.base/-j-d-w-p-reply-payload/index.html">JDWPReplyPayload</a></div><div class="brief "><p class="paragraph">Reply for <a href="-variable-table-with-generic/index.html">VariableTableWithGeneric</a></p></div></div></div>
                 </div>
               </div>
             </div>
