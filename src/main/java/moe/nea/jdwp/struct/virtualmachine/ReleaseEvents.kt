@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Tells the target VM to continue sending events. This command is used to restore normal activity after a HoldEvents command. If there is no current HoldEvents command in effect, this command is ignored.

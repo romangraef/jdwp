@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.stackframe
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the value of the 'this' reference for this frame. If the frame's method is static or native, the reply will contain the null object reference. 

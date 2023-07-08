@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the number of instances of each reference type in the input list. Only instances that are reachable for the purposes of garbage collection are counted.  If a reference type is invalid, eg. it has been unloaded, zero is returned for its instance count.

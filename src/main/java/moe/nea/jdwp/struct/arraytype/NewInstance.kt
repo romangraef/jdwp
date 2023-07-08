@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.arraytype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Creates a new array object of this type with a given length.

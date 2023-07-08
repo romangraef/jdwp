@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.classloaderreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns a list of all classes which this class loader can find by name via ,  and bytecode linkage. That is, all classes for which this class loader has been recorded as an  loader. The list contains each reference type created by this loader and any types for which loading was delegated by this class loader to another class loader. 

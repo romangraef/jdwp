@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.classtype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Invokes a static method. The method must be member of the class type or one of its superclasses. Access control is not enforced; for example, private methods can be invoked.

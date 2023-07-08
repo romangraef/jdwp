@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.method
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns variable information for the method. The variable table includes arguments and locals declared within the method. For instance methods, the "this" reference is included in the table. Also, synthetic variables may be present. 

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns reference types for all classes currently loaded by the target VM.  Both the JNI signature and the generic signature are returned for each class.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.

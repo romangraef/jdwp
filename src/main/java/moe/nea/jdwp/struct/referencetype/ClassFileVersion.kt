@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.referencetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the class file major and minor version numbers, as defined in the class file format of the Java Virtual Machine specification. 

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Terminates the target VM with the given exit code. On some platforms, the exit code might be truncated, for example, to the low order 8 bits. All ids previously returned from the target VM become invalid. Threads running in the VM are abruptly terminated. A thread death exception is not thrown and finally blocks are not run.

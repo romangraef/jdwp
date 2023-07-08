@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.referencetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns information, including the generic signature if any, for each field in a reference type. Inherited fields are not included. The field list will include any synthetic fields created by the compiler. Fields are returned in the order they occur in the class file.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.

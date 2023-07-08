@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the object, if any, for which this thread is waiting. The thread may be waiting to enter a monitor, or it may be waiting, via the java.lang.Object.wait method, for another thread to invoke the notify method. The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetCurrentContendedMonitor capability - see .

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.classtype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Creates a new object of this type, invoking the specified constructor. The constructor method ID must be a member of the class type.

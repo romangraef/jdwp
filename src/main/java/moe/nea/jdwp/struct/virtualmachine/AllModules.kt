@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns all modules in the target VM.

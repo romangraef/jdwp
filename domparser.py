@@ -184,7 +184,7 @@ class Emitter:
     def emit_root_imports(self):
         self.emit_line("import moe.nea.jdwp.*")
         self.emit_line("import moe.nea.jdwp.primitives.*")
-        self.emit_line("import moe.nea.jdwp.struct.base.*")
+        self.emit_line("import moe.nea.jdwp.base.*")
         self.emit_line()
 
     def child_emitter(self) -> 'Emitter':
@@ -255,7 +255,9 @@ class Emitter:
 
 if __name__ == '__main__':
     struct = main()
+    e = ""
     for command_set in struct:
+        e += f"# Package moe.nea.jdwp.struct.{command_set.name.lower()}\n\nThis package implements the [{command_set.name} Command Set]({command_set.url})\n\n"
         for command in command_set.children:
             emitter = Emitter(command.name)
             emitter.emit_package_declaration("moe.nea.jdwp.struct." + command.parent.name.lower())
@@ -275,3 +277,4 @@ if __name__ == '__main__':
             file.write_text(emitter.finish(), encoding='utf-8')
             if emitter.is_failing:
                 print(f"Failing for {command.name} in {command.parent.name} in {file}")
+    Path("GeneratedDocs.md").write_text(e, encoding="utf-8")

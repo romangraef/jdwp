@@ -2,8 +2,8 @@
 
 package moe.nea.jdwp
 
+import moe.nea.jdwp.base.*
 import moe.nea.jdwp.primitives.JDWPHandshake
-import moe.nea.jdwp.struct.base.*
 import moe.nea.jdwp.struct.virtualmachine.IDSizes
 import java.net.InetSocketAddress
 import java.net.Socket

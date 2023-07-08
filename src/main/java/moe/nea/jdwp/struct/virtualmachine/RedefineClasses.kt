@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.virtualmachine
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Installs new class definitions. If there are active stack frames in methods of the redefined classes in the target VM then those active frames continue to run the bytecodes of the original method. These methods are considered obsolete - see . The methods in the redefined classes will be used for new invokes in the target VM. The original method ID refers to the redefined method. All breakpoints in the redefined classes are cleared.If resetting of stack frames is desired, the  command can be used to pop frames with obsolete methods.

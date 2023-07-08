@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Get the suspend count for this thread. The suspend count is the  number of times the thread has been suspended through the thread-level or VM-level suspend commands without a corresponding resume 

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.objectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see .

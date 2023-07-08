@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Resumes the execution of a given thread. If this thread was not previously suspended by the front-end, calling this command has no effect. Otherwise, the count of pending suspends on this thread is decremented. If it is decremented to 0, the thread will continue to execute. 

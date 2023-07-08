@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns monitor objects owned by the thread, along with stack depth at which the monitor was acquired. Returns stack depth of -1  if the implementation cannot determine the stack depth (e.g., for monitors acquired by JNI MonitorEnter).The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetMonitorFrameInfo capability - see . 

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.objectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns objects that directly reference this object.  Only objects that are reachable for the purposes of garbage collection are returned. Note that an object can also be referenced in other ways, such as from a local variable in a stack frame, or from a JNI global reference.  Such non-object referrers are not returned by this command. 

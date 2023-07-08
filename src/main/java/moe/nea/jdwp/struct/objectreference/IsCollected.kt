@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.objectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Determines whether an object has been garbage collected in the target VM. 

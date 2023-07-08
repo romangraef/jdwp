@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.objectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Permits garbage collection for this object. By default all objects returned by JDWP may become unreachable in the target VM, and hence may be garbage collected. A call to this command is necessary only if garbage collection was previously disabled with the  command.

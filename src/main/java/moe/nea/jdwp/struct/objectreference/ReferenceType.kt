@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.objectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the runtime type of the object. The runtime type will be a class or an array. 

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.interfacetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Invokes a static method. The method must not be a static initializer. The method must be a member of the interface type. 

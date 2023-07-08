@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.method
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns line number information for the method, if present. The line table maps source line numbers to the initial code index of the line. The line table is ordered by code index (from lowest to highest). The line number information is constant unless a new class definition is installed using .

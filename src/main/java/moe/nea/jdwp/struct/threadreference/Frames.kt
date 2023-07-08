@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the current call stack of a suspended thread. The sequence of frames starts with the currently executing frame, followed by its caller, and so on. The thread must be suspended, and the returned frameID is valid only while the thread is suspended. 

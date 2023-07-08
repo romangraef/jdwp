@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.referencetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the modifiers (also known as access flags) for a reference type. The returned bit mask contains information on the declaration of the reference type. If the reference type is an array or a primitive class (for example, java.lang.Integer.TYPE), the value of the returned bit mask is undefined.

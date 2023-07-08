@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.referencetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the instance of java.lang.ClassLoader which loaded a given reference type. If the reference type was loaded by the system class loader, the returned object ID is null.

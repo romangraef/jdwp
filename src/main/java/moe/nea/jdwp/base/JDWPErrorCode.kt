@@ -1,4 +1,4 @@
-package moe.nea.jdwp.struct.base
+package moe.nea.jdwp.base
 
 import moe.nea.jdwp.primitives.ShortTagged
 import moe.nea.jdwp.primitives.Tagged.Companion.lookupTable

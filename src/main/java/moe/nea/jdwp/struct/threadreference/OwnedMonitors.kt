@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the objects whose monitors have been entered by this thread. The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetOwnedMonitorInfo capability - see .

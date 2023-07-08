@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.arrayreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Sets a range of array components. The specified range must be within the bounds of the array. For primitive values, each value's type must match the array component type exactly. For object values, there must be a widening reference conversion from the value's type to thearray component type and the array component type must be loaded. 

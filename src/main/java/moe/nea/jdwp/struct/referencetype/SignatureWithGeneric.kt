@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.referencetype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the JNI signature of a reference type along with the generic signature if there is one.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.

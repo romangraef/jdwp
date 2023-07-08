@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.classobjectreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the reference type reflected by this class object.

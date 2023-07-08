@@ -54,6 +54,7 @@ tasks.test {
 tasks.dokkaHtml {
     dokkaSourceSets {
         named("main") {
+            includes.from(file("Docs.md"), file("GeneratedDocs.md"))
             moduleName.set("JDWP-ProtocolLib")
             sourceLink {
                 localDirectory.set(file("src/main/"))

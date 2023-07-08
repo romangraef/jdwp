@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.classtype
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the immediate superclass of a class.

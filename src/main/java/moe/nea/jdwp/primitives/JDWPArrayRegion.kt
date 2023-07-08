@@ -2,7 +2,7 @@ package moe.nea.jdwp.primitives
 
 import moe.nea.jdwp.JDWPComposite
 import moe.nea.jdwp.JDWPPrimitiveVariableSizeLong
-import moe.nea.jdwp.struct.base.JDWPTagConstants
+import moe.nea.jdwp.base.JDWPTagConstants
 
 class JDWPArrayRegion : JDWPComposite() {
     var typeTag by useField(JDWPEnum.ofByteTagged<JDWPTagConstants>())

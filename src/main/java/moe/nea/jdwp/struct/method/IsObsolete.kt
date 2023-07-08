@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.method
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Determine if this method is obsolete. A method is obsolete if it has been replaced by a non-equivalent method using the  command. The original and redefined methods are considered equivalent if their bytecodes are the same except for indices into the constant pool and the referenced constants are equal.

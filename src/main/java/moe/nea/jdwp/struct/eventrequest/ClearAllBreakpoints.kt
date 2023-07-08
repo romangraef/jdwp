@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.eventrequest
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Removes all set breakpoints, a no-op if there are no breakpoints set.

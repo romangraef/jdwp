@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.threadreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the count of frames on this thread's stack. The thread must be suspended, and the returned count is valid only while the thread is suspended. Returns JDWP.Error.errorThreadNotSuspended if not suspended. 

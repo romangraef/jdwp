@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
-package moe.nea.jdwp.struct.base
+package moe.nea.jdwp.base
 
 import moe.nea.jdwp.*
 

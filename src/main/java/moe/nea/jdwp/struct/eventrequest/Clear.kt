@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.eventrequest
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Clear an event request. See  for a complete list of events that can be cleared. Only the event request matching the specified event kind and requestID is cleared. If there isn't a matching event request the command is a no-op and does not result in an error. Automatically generated events do not have a corresponding event request and may not be cleared using this command.

@@ -2,7 +2,7 @@ package moe.nea.jdwp.struct.arrayreference
 
 import moe.nea.jdwp.*
 import moe.nea.jdwp.primitives.*
-import moe.nea.jdwp.struct.base.*
+import moe.nea.jdwp.base.*
 
 /**
  * Returns the number of components in a given array. 
