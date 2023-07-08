@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Invokes a static method. The method must not be a static initializer. The method must be a member of the interface type.
+ * Invokes a static method. The method must not be a static initializer. The method must be a member of the interface type. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_InterfaceType_InvokeMethod)
  */
 class InvokeMethod : JDWPComposite(), JDWPCommandPayload<InvokeMethodReply> {
     /**
@@ -20,9 +21,6 @@ class InvokeMethod : JDWPComposite(), JDWPCommandPayload<InvokeMethodReply> {
      * The method to invoke.
      */
     var methodID by useField(JDWPMethodId())
-    /**
-     * 
-     */
     var arguments by useField(JDWPInt())
     var argumentsElements by useField(JDWPExternalVector(this::arguments, ::InvokeMethodArgumentsElement))
     /**
@@ -51,6 +49,9 @@ class InvokeMethodReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
+/**
+ * Component for [InvokeMethod]
+ */
 class InvokeMethodArgumentsElement : JDWPComposite() {
     /**
      * The argument value.

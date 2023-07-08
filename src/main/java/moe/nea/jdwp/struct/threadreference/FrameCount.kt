@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns the count of frames on this thread's stack. The thread must be suspended, and the returned count is valid only while the thread is suspended. Returns JDWP.Error.errorThreadNotSuspended if not suspended.
+ * Returns the count of frames on this thread's stack. The thread must be suspended, and the returned count is valid only while the thread is suspended. Returns JDWP.Error.errorThreadNotSuspended if not suspended. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_FrameCount)
  */
 class FrameCount : JDWPComposite(), JDWPCommandPayload<FrameCountReply> {
     /**

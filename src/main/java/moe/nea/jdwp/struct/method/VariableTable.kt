@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns variable information for the method. The variable table includes arguments and locals declared within the method. For instance methods, the "this" reference is included in the table. Also, synthetic variables may be present.
+ * Returns variable information for the method. The variable table includes arguments and locals declared within the method. For instance methods, the "this" reference is included in the table. Also, synthetic variables may be present. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTable)
  */
 class VariableTable : JDWPComposite(), JDWPCommandPayload<VariableTableReply> {
     /**
@@ -32,14 +33,17 @@ class VariableTableReply : JDWPComposite(), JDWPReplyPayload {
      * The number of variables.
      */
     var slots by useField(JDWPInt())
-    var slotsElements by useField(JDWPExternalVector(this::slots, ::VariableTableSlotsElement))
+    var slotsElements by useField(JDWPExternalVector(this::slots, ::VariableTableReplySlotsElement))
 }
 
 
 
 
 
-class VariableTableSlotsElement : JDWPComposite() {
+/**
+ * Component for [VariableTableReply]
+ */
+class VariableTableReplySlotsElement : JDWPComposite() {
     /**
      * First code index at which the variable is visible (unsigned). Used in conjunction with length. The variable can be get or set only when the current codeIndex <= current frame code index < codeIndex + length
      */

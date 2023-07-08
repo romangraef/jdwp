@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns objects that directly reference this object.  Only objects that are reachable for the purposes of garbage collection are returned. Note that an object can also be referenced in other ways, such as from a local variable in a stack frame, or from a JNI global reference.  Such non-object referrers are not returned by this command.
+ * Returns objects that directly reference this object.  Only objects that are reachable for the purposes of garbage collection are returned. Note that an object can also be referenced in other ways, such as from a local variable in a stack frame, or from a JNI global reference.  Such non-object referrers are not returned by this command. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferringObjects)
  */
 class ReferringObjects : JDWPComposite(), JDWPCommandPayload<ReferringObjectsReply> {
     /**
@@ -28,13 +29,16 @@ class ReferringObjectsReply : JDWPComposite(), JDWPReplyPayload {
      * The number of objects that follow.
      */
     var referringObjects by useField(JDWPInt())
-    var referringObjectsElements by useField(JDWPExternalVector(this::referringObjects, ::ReferringObjectsReferringObjectsElement))
+    var referringObjectsElements by useField(JDWPExternalVector(this::referringObjects, ::ReferringObjectsReplyReferringObjectsElement))
 }
 
 
 
 
-class ReferringObjectsReferringObjectsElement : JDWPComposite() {
+/**
+ * Component for [ReferringObjectsReply]
+ */
+class ReferringObjectsReplyReferringObjectsElement : JDWPComposite() {
     /**
      * An object that references this object.
      */

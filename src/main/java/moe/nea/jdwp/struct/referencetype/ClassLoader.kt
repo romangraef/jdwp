@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the instance of java.lang.ClassLoader which loaded a given reference type. If the reference type was loaded by the system class loader, the returned object ID is null.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_ClassLoader)
  */
 class ClassLoader : JDWPComposite(), JDWPCommandPayload<ClassLoaderReply> {
     /**

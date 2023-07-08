@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns all thread groups that do not have a parent. This command may be used as the first step in building a tree (or trees) of the existing thread groups.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_TopLevelThreadGroups)
  */
 class TopLevelThreadGroups : JDWPComposite(), JDWPCommandPayload<TopLevelThreadGroupsReply> {
     override val reply = TopLevelThreadGroupsReply()
@@ -20,11 +21,14 @@ class TopLevelThreadGroupsReply : JDWPComposite(), JDWPReplyPayload {
      * Number of thread groups that follow.
      */
     var groups by useField(JDWPInt())
-    var groupsElements by useField(JDWPExternalVector(this::groups, ::TopLevelThreadGroupsGroupsElement))
+    var groupsElements by useField(JDWPExternalVector(this::groups, ::TopLevelThreadGroupsReplyGroupsElement))
 }
 
 
-class TopLevelThreadGroupsGroupsElement : JDWPComposite() {
+/**
+ * Component for [TopLevelThreadGroupsReply]
+ */
+class TopLevelThreadGroupsReplyGroupsElement : JDWPComposite() {
     /**
      * A top level thread group
      */

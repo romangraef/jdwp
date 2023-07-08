@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the JNI signature of a reference type along with the generic signature if there is one.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_SignatureWithGeneric)
  */
 class SignatureWithGeneric : JDWPComposite(), JDWPCommandPayload<SignatureWithGenericReply> {
     /**

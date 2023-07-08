@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns instances of this reference type. Only instances that are reachable for the purposes of garbage collection are returned.
+ * Returns instances of this reference type. Only instances that are reachable for the purposes of garbage collection are returned. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Instances)
  */
 class Instances : JDWPComposite(), JDWPCommandPayload<InstancesReply> {
     /**
@@ -28,13 +29,16 @@ class InstancesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of instances that follow.
      */
     var instances by useField(JDWPInt())
-    var instancesElements by useField(JDWPExternalVector(this::instances, ::InstancesInstancesElement))
+    var instancesElements by useField(JDWPExternalVector(this::instances, ::InstancesReplyInstancesElement))
 }
 
 
 
 
-class InstancesInstancesElement : JDWPComposite() {
+/**
+ * Component for [InstancesReply]
+ */
+class InstancesReplyInstancesElement : JDWPComposite() {
     /**
      * An instance of this reference type.
      */

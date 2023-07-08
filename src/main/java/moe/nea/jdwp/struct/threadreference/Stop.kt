@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Stops the thread with an asynchronous exception.
+ * Stops the thread with an asynchronous exception. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Stop)
  */
 class Stop : JDWPComposite(), JDWPCommandPayload<StopReply> {
     /**

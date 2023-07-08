@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be obtained.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_GetValues)
  */
 class GetValues : JDWPComposite(), JDWPCommandPayload<GetValuesReply> {
     /**
@@ -29,11 +30,14 @@ class GetValuesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of values returned, always equal to 'fields', the number of values to get. Field values are ordered in the reply in the same order as corresponding fieldIDs in the command.
      */
     var values by useField(JDWPInt())
-    var valuesElements by useField(JDWPExternalVector(this::values, ::GetValuesValuesElement))
+    var valuesElements by useField(JDWPExternalVector(this::values, ::GetValuesReplyValuesElement))
 }
 
 
 
+/**
+ * Component for [GetValues]
+ */
 class GetValuesFieldsElement : JDWPComposite() {
     /**
      * Field to get.
@@ -43,7 +47,10 @@ class GetValuesFieldsElement : JDWPComposite() {
 
 
 
-class GetValuesValuesElement : JDWPComposite() {
+/**
+ * Component for [GetValuesReply]
+ */
+class GetValuesReplyValuesElement : JDWPComposite() {
     /**
      * The field value
      */

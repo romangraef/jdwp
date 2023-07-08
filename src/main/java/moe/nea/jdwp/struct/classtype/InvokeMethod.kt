@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Invokes a static method. The method must be member of the class type or one of its superclasses. Access control is not enforced; for example, private methods can be invoked.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassType_InvokeMethod)
  */
 class InvokeMethod : JDWPComposite(), JDWPCommandPayload<InvokeMethodReply> {
     /**
@@ -20,9 +21,6 @@ class InvokeMethod : JDWPComposite(), JDWPCommandPayload<InvokeMethodReply> {
      * The method to invoke.
      */
     var methodID by useField(JDWPMethodId())
-    /**
-     * 
-     */
     var arguments by useField(JDWPInt())
     var argumentsElements by useField(JDWPExternalVector(this::arguments, ::InvokeMethodArgumentsElement))
     /**
@@ -51,6 +49,9 @@ class InvokeMethodReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
+/**
+ * Component for [InvokeMethod]
+ */
 class InvokeMethodArgumentsElement : JDWPComposite() {
     /**
      * The argument value.

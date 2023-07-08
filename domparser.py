@@ -163,9 +163,17 @@ class Emitter:
     def emit_line(self, line: str = ""):
         self.stream += '    ' * self.indent + line + '\n'
 
-    def emit_docs(self, docs: str | JDWPElement):
-        if hasattr(docs, "description"):
-            return self.emit_docs(docs.description)
+    def emit_docs(self, docs: str | object):
+        if isinstance(docs, object):
+            d = ""
+            if hasattr(docs, "docs"):
+                d += docs.docs + "\n"
+            if hasattr(docs, "description"):
+                d += docs.description + "\n"
+            if hasattr(docs, "url"):
+                d += "\n[External](" + docs.url + ")"
+            if d.strip():
+                return self.emit_docs(d)
         if not isinstance(docs, str):
             return
         self.emit_line("/**")
@@ -221,6 +229,8 @@ class Emitter:
 
     def emit_composite(self, name: str, composite: Composite, interfaces: typing.List[str] = [],
                        ref_usesite: bool = False) -> str:
+        if name != self.context_prefix:
+            self.emit_docs("Component for [" + self.context_prefix + "]")
         self.emit_line("class " + name + " : " + ', '.join(['JDWPComposite()'] + interfaces) + " {")
         self.indent += 1
         for element in composite.children:
@@ -250,12 +260,13 @@ if __name__ == '__main__':
             emitter = Emitter(command.name)
             emitter.emit_package_declaration("moe.nea.jdwp.struct." + command.parent.name.lower())
             emitter.emit_root_imports()
-            emitter.emit_docs(command.docs)
+            emitter.emit_docs(command)
             if hasattr(command.request, "children"):
                 command.request.children.append(
                     CommandBaseMeta(command.parent.set_id, command.command_id))
             emitter.emit_element(command.request, name_hint=command.name,
                                  interfaces=["JDWPCommandPayload<" + command.name + "Reply>"])
+            emitter.context_prefix = command.name + "Reply"
             emitter.emit_docs("Reply for [" + command.name + "]")
             emitter.emit_element(command.reply, name_hint=command.name + "Reply",
                                  interfaces=["JDWPReplyPayload"])

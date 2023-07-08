@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Retrieve the classpath and bootclasspath of the target VM. If the classpath is not defined, returns an empty list. If the bootclasspath is not defined returns an empty list.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassPaths)
  */
 class ClassPaths : JDWPComposite(), JDWPCommandPayload<ClassPathsReply> {
     override val reply = ClassPathsReply()
@@ -24,17 +25,20 @@ class ClassPathsReply : JDWPComposite(), JDWPReplyPayload {
      * Number of paths in classpath.
      */
     var classpaths by useField(JDWPInt())
-    var classpathsElements by useField(JDWPExternalVector(this::classpaths, ::ClassPathsClasspathsElement))
+    var classpathsElements by useField(JDWPExternalVector(this::classpaths, ::ClassPathsReplyClasspathsElement))
     /**
      * Number of paths in bootclasspath.
      */
     var bootclasspaths by useField(JDWPInt())
-    var bootclasspathsElements by useField(JDWPExternalVector(this::bootclasspaths, ::ClassPathsBootclasspathsElement))
+    var bootclasspathsElements by useField(JDWPExternalVector(this::bootclasspaths, ::ClassPathsReplyBootclasspathsElement))
 }
 
 
 
-class ClassPathsClasspathsElement : JDWPComposite() {
+/**
+ * Component for [ClassPathsReply]
+ */
+class ClassPathsReplyClasspathsElement : JDWPComposite() {
     /**
      * One component of classpath
      */
@@ -43,7 +47,10 @@ class ClassPathsClasspathsElement : JDWPComposite() {
 
 
 
-class ClassPathsBootclasspathsElement : JDWPComposite() {
+/**
+ * Component for [ClassPathsReply]
+ */
+class ClassPathsReplyBootclasspathsElement : JDWPComposite() {
     /**
      * One component of bootclasspath
      */

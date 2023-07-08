@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns information for each field in a reference type. Inherited fields are not included. The field list will include any synthetic fields created by the compiler. Fields are returned in the order they occur in the class file.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Fields)
  */
 class Fields : JDWPComposite(), JDWPCommandPayload<FieldsReply> {
     /**
@@ -24,12 +25,15 @@ class FieldsReply : JDWPComposite(), JDWPReplyPayload {
      * Number of declared fields.
      */
     var declared by useField(JDWPInt())
-    var declaredElements by useField(JDWPExternalVector(this::declared, ::FieldsDeclaredElement))
+    var declaredElements by useField(JDWPExternalVector(this::declared, ::FieldsReplyDeclaredElement))
 }
 
 
 
-class FieldsDeclaredElement : JDWPComposite() {
+/**
+ * Component for [FieldsReply]
+ */
+class FieldsReplyDeclaredElement : JDWPComposite() {
     /**
      * Field ID.
      */

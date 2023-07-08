@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the type signature of a reference type. Type signature formats are the same as specified in .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Signature)
  */
 class Signature : JDWPComposite(), JDWPCommandPayload<SignatureReply> {
     /**

@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns a list of all classes which this class loader can find by name via ,  and bytecode linkage. That is, all classes for which this class loader has been recorded as an  loader. The list contains each reference type created by this loader and any types for which loading was delegated by this class loader to another class loader.
+ * Returns a list of all classes which this class loader can find by name via ,  and bytecode linkage. That is, all classes for which this class loader has been recorded as an  loader. The list contains each reference type created by this loader and any types for which loading was delegated by this class loader to another class loader. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassLoaderReference_VisibleClasses)
  */
 class VisibleClasses : JDWPComposite(), JDWPCommandPayload<VisibleClassesReply> {
     /**
@@ -24,12 +25,15 @@ class VisibleClassesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of visible classes.
      */
     var classes by useField(JDWPInt())
-    var classesElements by useField(JDWPExternalVector(this::classes, ::VisibleClassesClassesElement))
+    var classesElements by useField(JDWPExternalVector(this::classes, ::VisibleClassesReplyClassesElement))
 }
 
 
 
-class VisibleClassesClassesElement : JDWPComposite() {
+/**
+ * Component for [VisibleClassesReply]
+ */
+class VisibleClassesReplyClassesElement : JDWPComposite() {
     /**
      * Kind of following reference type.
      */

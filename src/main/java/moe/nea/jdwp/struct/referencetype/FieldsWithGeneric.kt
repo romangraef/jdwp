@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns information, including the generic signature if any, for each field in a reference type. Inherited fields are not included. The field list will include any synthetic fields created by the compiler. Fields are returned in the order they occur in the class file.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_FieldsWithGeneric)
  */
 class FieldsWithGeneric : JDWPComposite(), JDWPCommandPayload<FieldsWithGenericReply> {
     /**
@@ -24,12 +25,15 @@ class FieldsWithGenericReply : JDWPComposite(), JDWPReplyPayload {
      * Number of declared fields.
      */
     var declared by useField(JDWPInt())
-    var declaredElements by useField(JDWPExternalVector(this::declared, ::FieldsWithGenericDeclaredElement))
+    var declaredElements by useField(JDWPExternalVector(this::declared, ::FieldsWithGenericReplyDeclaredElement))
 }
 
 
 
-class FieldsWithGenericDeclaredElement : JDWPComposite() {
+/**
+ * Component for [FieldsWithGenericReply]
+ */
+class FieldsWithGenericReplyDeclaredElement : JDWPComposite() {
     /**
      * Field ID.
      */

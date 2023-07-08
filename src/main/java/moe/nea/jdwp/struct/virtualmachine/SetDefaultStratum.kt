@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Set the default stratum. Requires canSetDefaultStratum capability - see .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_SetDefaultStratum)
  */
 class SetDefaultStratum : JDWPComposite(), JDWPCommandPayload<SetDefaultStratumReply> {
     /**

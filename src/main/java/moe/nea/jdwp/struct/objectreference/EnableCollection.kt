@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Permits garbage collection for this object. By default all objects returned by JDWP may become unreachable in the target VM, and hence may be garbage collected. A call to this command is necessary only if garbage collection was previously disabled with the  command.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_EnableCollection)
  */
 class EnableCollection : JDWPComposite(), JDWPCommandPayload<EnableCollectionReply> {
     /**

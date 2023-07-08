@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns monitor objects owned by the thread, along with stack depth at which the monitor was acquired. Returns stack depth of -1  if the implementation cannot determine the stack depth (e.g., for monitors acquired by JNI MonitorEnter).The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetMonitorFrameInfo capability - see .
+ * Returns monitor objects owned by the thread, along with stack depth at which the monitor was acquired. Returns stack depth of -1  if the implementation cannot determine the stack depth (e.g., for monitors acquired by JNI MonitorEnter).The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetMonitorFrameInfo capability - see . 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_OwnedMonitorsStackDepthInfo)
  */
 class OwnedMonitorsStackDepthInfo : JDWPComposite(), JDWPCommandPayload<OwnedMonitorsStackDepthInfoReply> {
     /**
@@ -24,12 +25,15 @@ class OwnedMonitorsStackDepthInfoReply : JDWPComposite(), JDWPReplyPayload {
      * The number of owned monitors
      */
     var owned by useField(JDWPInt())
-    var ownedElements by useField(JDWPExternalVector(this::owned, ::OwnedMonitorsStackDepthInfoOwnedElement))
+    var ownedElements by useField(JDWPExternalVector(this::owned, ::OwnedMonitorsStackDepthInfoReplyOwnedElement))
 }
 
 
 
-class OwnedMonitorsStackDepthInfoOwnedElement : JDWPComposite() {
+/**
+ * Component for [OwnedMonitorsStackDepthInfoReply]
+ */
+class OwnedMonitorsStackDepthInfoReplyOwnedElement : JDWPComposite() {
     /**
      * An owned monitor
      */

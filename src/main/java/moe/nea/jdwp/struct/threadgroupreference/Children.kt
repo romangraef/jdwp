@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the live threads and active thread groups directly contained in this thread group. Threads and thread groups in child thread groups are not included. A thread is alive if it has been started and has not yet been stopped. See for information about active ThreadGroups.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadGroupReference_Children)
  */
 class Children : JDWPComposite(), JDWPCommandPayload<ChildrenReply> {
     /**
@@ -24,17 +25,20 @@ class ChildrenReply : JDWPComposite(), JDWPReplyPayload {
      * The number of live child threads.
      */
     var childThreads by useField(JDWPInt())
-    var childThreadsElements by useField(JDWPExternalVector(this::childThreads, ::ChildrenChildThreadsElement))
+    var childThreadsElements by useField(JDWPExternalVector(this::childThreads, ::ChildrenReplyChildThreadsElement))
     /**
      * The number of active child thread groups.
      */
     var childGroups by useField(JDWPInt())
-    var childGroupsElements by useField(JDWPExternalVector(this::childGroups, ::ChildrenChildGroupsElement))
+    var childGroupsElements by useField(JDWPExternalVector(this::childGroups, ::ChildrenReplyChildGroupsElement))
 }
 
 
 
-class ChildrenChildThreadsElement : JDWPComposite() {
+/**
+ * Component for [ChildrenReply]
+ */
+class ChildrenReplyChildThreadsElement : JDWPComposite() {
     /**
      * A direct child thread ID.
      */
@@ -43,7 +47,10 @@ class ChildrenChildThreadsElement : JDWPComposite() {
 
 
 
-class ChildrenChildGroupsElement : JDWPComposite() {
+/**
+ * Component for [ChildrenReply]
+ */
+class ChildrenReplyChildGroupsElement : JDWPComposite() {
     /**
      * A direct child thread group ID.
      */

@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns line number information for the method, if present. The line table maps source line numbers to the initial code index of the line. The line table is ordered by code index (from lowest to highest). The line number information is constant unless a new class definition is installed using .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_LineTable)
  */
 class LineTable : JDWPComposite(), JDWPCommandPayload<LineTableReply> {
     /**
@@ -36,7 +37,7 @@ class LineTableReply : JDWPComposite(), JDWPReplyPayload {
      * The number of entries in the line table for this method.
      */
     var lines by useField(JDWPInt())
-    var linesElements by useField(JDWPExternalVector(this::lines, ::LineTableLinesElement))
+    var linesElements by useField(JDWPExternalVector(this::lines, ::LineTableReplyLinesElement))
 }
 
 
@@ -44,7 +45,10 @@ class LineTableReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
-class LineTableLinesElement : JDWPComposite() {
+/**
+ * Component for [LineTableReply]
+ */
+class LineTableReplyLinesElement : JDWPComposite() {
     /**
      * Initial code index of the line, start <= lineCodeIndex < end
      */

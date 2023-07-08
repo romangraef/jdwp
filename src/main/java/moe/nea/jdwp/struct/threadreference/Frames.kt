@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns the current call stack of a suspended thread. The sequence of frames starts with the currently executing frame, followed by its caller, and so on. The thread must be suspended, and the returned frameID is valid only while the thread is suspended.
+ * Returns the current call stack of a suspended thread. The sequence of frames starts with the currently executing frame, followed by its caller, and so on. The thread must be suspended, and the returned frameID is valid only while the thread is suspended. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Frames)
  */
 class Frames : JDWPComposite(), JDWPCommandPayload<FramesReply> {
     /**
@@ -32,14 +33,17 @@ class FramesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of frames retreived
      */
     var frames by useField(JDWPInt())
-    var framesElements by useField(JDWPExternalVector(this::frames, ::FramesFramesElement))
+    var framesElements by useField(JDWPExternalVector(this::frames, ::FramesReplyFramesElement))
 }
 
 
 
 
 
-class FramesFramesElement : JDWPComposite() {
+/**
+ * Component for [FramesReply]
+ */
+class FramesReplyFramesElement : JDWPComposite() {
     /**
      * The ID of this frame.
      */

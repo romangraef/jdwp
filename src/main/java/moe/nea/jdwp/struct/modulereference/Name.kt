@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the name of this module.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ModuleReference_Name)
  */
 class Name : JDWPComposite(), JDWPCommandPayload<NameReply> {
     /**

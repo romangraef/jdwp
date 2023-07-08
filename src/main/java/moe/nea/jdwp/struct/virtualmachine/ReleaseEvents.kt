@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Tells the target VM to continue sending events. This command is used to restore normal activity after a HoldEvents command. If there is no current HoldEvents command in effect, this command is ignored.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ReleaseEvents)
  */
 class ReleaseEvents : JDWPComposite(), JDWPCommandPayload<ReleaseEventsReply> {
     override val reply = ReleaseEventsReply()

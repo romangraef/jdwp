@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_MonitorInfo)
  */
 class MonitorInfo : JDWPComposite(), JDWPCommandPayload<MonitorInfoReply> {
     /**
@@ -32,14 +33,17 @@ class MonitorInfoReply : JDWPComposite(), JDWPReplyPayload {
      * The number of threads that are waiting for the monitor 0 if there is no current owner
      */
     var waiters by useField(JDWPInt())
-    var waitersElements by useField(JDWPExternalVector(this::waiters, ::MonitorInfoWaitersElement))
+    var waitersElements by useField(JDWPExternalVector(this::waiters, ::MonitorInfoReplyWaitersElement))
 }
 
 
 
 
 
-class MonitorInfoWaitersElement : JDWPComposite() {
+/**
+ * Component for [MonitorInfoReply]
+ */
+class MonitorInfoReplyWaitersElement : JDWPComposite() {
     /**
      * A thread waiting for this monitor.
      */

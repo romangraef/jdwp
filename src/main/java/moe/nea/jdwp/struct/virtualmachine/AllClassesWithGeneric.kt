@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns reference types for all classes currently loaded by the target VM.  Both the JNI signature and the generic signature are returned for each class.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllClassesWithGeneric)
  */
 class AllClassesWithGeneric : JDWPComposite(), JDWPCommandPayload<AllClassesWithGenericReply> {
     override val reply = AllClassesWithGenericReply()
@@ -20,11 +21,14 @@ class AllClassesWithGenericReply : JDWPComposite(), JDWPReplyPayload {
      * Number of reference types that follow.
      */
     var classes by useField(JDWPInt())
-    var classesElements by useField(JDWPExternalVector(this::classes, ::AllClassesWithGenericClassesElement))
+    var classesElements by useField(JDWPExternalVector(this::classes, ::AllClassesWithGenericReplyClassesElement))
 }
 
 
-class AllClassesWithGenericClassesElement : JDWPComposite() {
+/**
+ * Component for [AllClassesWithGenericReply]
+ */
+class AllClassesWithGenericReplyClassesElement : JDWPComposite() {
     /**
      * Kind of following reference type.
      */

@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns the classes and interfaces directly nested within this type.Types further nested within those types are not included.
+ * Returns the classes and interfaces directly nested within this type.Types further nested within those types are not included. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_NestedTypes)
  */
 class NestedTypes : JDWPComposite(), JDWPCommandPayload<NestedTypesReply> {
     /**
@@ -24,12 +25,15 @@ class NestedTypesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of nested classes and interfaces
      */
     var classes by useField(JDWPInt())
-    var classesElements by useField(JDWPExternalVector(this::classes, ::NestedTypesClassesElement))
+    var classesElements by useField(JDWPExternalVector(this::classes, ::NestedTypesReplyClassesElement))
 }
 
 
 
-class NestedTypesClassesElement : JDWPComposite() {
+/**
+ * Component for [NestedTypesReply]
+ */
+class NestedTypesReplyClassesElement : JDWPComposite() {
     /**
      * Kind of following reference type.
      */

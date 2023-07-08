@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Invokes a instance method. The method must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, private methods can be invoked.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_InvokeMethod)
  */
 class InvokeMethod : JDWPComposite(), JDWPCommandPayload<InvokeMethodReply> {
     /**
@@ -56,6 +57,9 @@ class InvokeMethodReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
+/**
+ * Component for [InvokeMethod]
+ */
 class InvokeMethodArgumentsElement : JDWPComposite() {
     /**
      * The argument value.

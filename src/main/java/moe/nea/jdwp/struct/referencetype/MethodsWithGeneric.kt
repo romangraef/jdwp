@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns information, including the generic signature if any, for each method in a reference type. Inherited methodss are not included. The list of methods will include constructors (identified with the name "<init>"), the initialization method (identified with the name "<clinit>") if present, and any synthetic methods created by the compiler. Methods are returned in the order they occur in the class file.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_MethodsWithGeneric)
  */
 class MethodsWithGeneric : JDWPComposite(), JDWPCommandPayload<MethodsWithGenericReply> {
     /**
@@ -24,12 +25,15 @@ class MethodsWithGenericReply : JDWPComposite(), JDWPReplyPayload {
      * Number of declared methods.
      */
     var declared by useField(JDWPInt())
-    var declaredElements by useField(JDWPExternalVector(this::declared, ::MethodsWithGenericDeclaredElement))
+    var declaredElements by useField(JDWPExternalVector(this::declared, ::MethodsWithGenericReplyDeclaredElement))
 }
 
 
 
-class MethodsWithGenericDeclaredElement : JDWPComposite() {
+/**
+ * Component for [MethodsWithGenericReply]
+ */
+class MethodsWithGenericReplyDeclaredElement : JDWPComposite() {
     /**
      * Method ID.
      */

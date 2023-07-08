@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Sets the value of one or more static fields. Each field must be member of the class type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be set. Final fields cannot be set.For primitive values, the value's type must match the field's type exactly. For object values, there must exist a widening reference conversion from the value's type to thefield's type and the field's type must be loaded.
+ * Sets the value of one or more static fields. Each field must be member of the class type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be set. Final fields cannot be set.For primitive values, the value's type must match the field's type exactly. For object values, there must exist a widening reference conversion from the value's type to thefield's type and the field's type must be loaded. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassType_SetValues)
  */
 class SetValues : JDWPComposite(), JDWPCommandPayload<SetValuesReply> {
     /**
@@ -29,6 +30,9 @@ class SetValuesReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
+/**
+ * Component for [SetValues]
+ */
 class SetValuesValuesElement : JDWPComposite() {
     /**
      * Field to set.

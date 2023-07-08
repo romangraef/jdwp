@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the objects whose monitors have been entered by this thread. The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetOwnedMonitorInfo capability - see .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_OwnedMonitors)
  */
 class OwnedMonitors : JDWPComposite(), JDWPCommandPayload<OwnedMonitorsReply> {
     /**
@@ -24,12 +25,15 @@ class OwnedMonitorsReply : JDWPComposite(), JDWPReplyPayload {
      * The number of owned monitors
      */
     var owned by useField(JDWPInt())
-    var ownedElements by useField(JDWPExternalVector(this::owned, ::OwnedMonitorsOwnedElement))
+    var ownedElements by useField(JDWPExternalVector(this::owned, ::OwnedMonitorsReplyOwnedElement))
 }
 
 
 
-class OwnedMonitorsOwnedElement : JDWPComposite() {
+/**
+ * Component for [OwnedMonitorsReply]
+ */
+class OwnedMonitorsReplyOwnedElement : JDWPComposite() {
     /**
      * An owned monitor
      */

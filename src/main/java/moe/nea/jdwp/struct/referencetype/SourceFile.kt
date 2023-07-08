@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns the name of source file in which a reference type was declared.
+ * Returns the name of source file in which a reference type was declared. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_SourceFile)
  */
 class SourceFile : JDWPComposite(), JDWPCommandPayload<SourceFileReply> {
     /**

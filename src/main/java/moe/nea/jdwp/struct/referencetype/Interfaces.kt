@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the interfaces declared as implemented by this class. Interfaces indirectly implemented (extended by the implemented interface or implemented by a superclass) are not included.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Interfaces)
  */
 class Interfaces : JDWPComposite(), JDWPCommandPayload<InterfacesReply> {
     /**
@@ -24,12 +25,15 @@ class InterfacesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of implemented interfaces
      */
     var interfaces by useField(JDWPInt())
-    var interfacesElements by useField(JDWPExternalVector(this::interfaces, ::InterfacesInterfacesElement))
+    var interfacesElements by useField(JDWPExternalVector(this::interfaces, ::InterfacesReplyInterfacesElement))
 }
 
 
 
-class InterfacesInterfacesElement : JDWPComposite() {
+/**
+ * Component for [InterfacesReply]
+ */
+class InterfacesReplyInterfacesElement : JDWPComposite() {
     /**
      * implemented interface.
      */

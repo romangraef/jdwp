@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the module that this reference type belongs to.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Module)
  */
 class Module : JDWPComposite(), JDWPCommandPayload<ModuleReply> {
     /**

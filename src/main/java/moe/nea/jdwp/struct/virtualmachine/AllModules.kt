@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns all modules in the target VM.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllModules)
  */
 class AllModules : JDWPComposite(), JDWPCommandPayload<AllModulesReply> {
     override val reply = AllModulesReply()
@@ -20,11 +21,14 @@ class AllModulesReply : JDWPComposite(), JDWPReplyPayload {
      * The number of the modules that follow.
      */
     var modules by useField(JDWPInt())
-    var modulesElements by useField(JDWPExternalVector(this::modules, ::AllModulesModulesElement))
+    var modulesElements by useField(JDWPExternalVector(this::modules, ::AllModulesReplyModulesElement))
 }
 
 
-class AllModulesModulesElement : JDWPComposite() {
+/**
+ * Component for [AllModulesReply]
+ */
+class AllModulesReplyModulesElement : JDWPComposite() {
     /**
      * One of the modules.
      */

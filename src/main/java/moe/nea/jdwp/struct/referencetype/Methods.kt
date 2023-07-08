@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns information for each method in a reference type. Inherited methods are not included. The list of methods will include constructors (identified with the name "<init>"), the initialization method (identified with the name "<clinit>") if present, and any synthetic methods created by the compiler. Methods are returned in the order they occur in the class file.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Methods)
  */
 class Methods : JDWPComposite(), JDWPCommandPayload<MethodsReply> {
     /**
@@ -24,12 +25,15 @@ class MethodsReply : JDWPComposite(), JDWPReplyPayload {
      * Number of declared methods.
      */
     var declared by useField(JDWPInt())
-    var declaredElements by useField(JDWPExternalVector(this::declared, ::MethodsDeclaredElement))
+    var declaredElements by useField(JDWPExternalVector(this::declared, ::MethodsReplyDeclaredElement))
 }
 
 
 
-class MethodsDeclaredElement : JDWPComposite() {
+/**
+ * Component for [MethodsReply]
+ */
+class MethodsReplyDeclaredElement : JDWPComposite() {
     /**
      * Method ID.
      */

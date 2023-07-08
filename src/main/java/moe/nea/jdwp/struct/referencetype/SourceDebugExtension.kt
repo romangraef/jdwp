@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the value of the SourceDebugExtension attribute. Since JDWP version 1.4. Requires canGetSourceDebugExtension capability - see .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_SourceDebugExtension)
  */
 class SourceDebugExtension : JDWPComposite(), JDWPCommandPayload<SourceDebugExtensionReply> {
     /**

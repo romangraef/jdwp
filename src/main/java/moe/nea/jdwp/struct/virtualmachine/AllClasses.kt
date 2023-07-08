@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns reference types for all classes currently loaded by the target VM. See .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllClasses)
  */
 class AllClasses : JDWPComposite(), JDWPCommandPayload<AllClassesReply> {
     override val reply = AllClassesReply()
@@ -20,11 +21,14 @@ class AllClassesReply : JDWPComposite(), JDWPReplyPayload {
      * Number of reference types that follow.
      */
     var classes by useField(JDWPInt())
-    var classesElements by useField(JDWPExternalVector(this::classes, ::AllClassesClassesElement))
+    var classesElements by useField(JDWPExternalVector(this::classes, ::AllClassesReplyClassesElement))
 }
 
 
-class AllClassesClassesElement : JDWPComposite() {
+/**
+ * Component for [AllClassesReply]
+ */
+class AllClassesReplyClassesElement : JDWPComposite() {
     /**
      * Kind of following reference type.
      */

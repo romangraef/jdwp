@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Creates a new object of this type, invoking the specified constructor. The constructor method ID must be a member of the class type.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassType_NewInstance)
  */
 class NewInstance : JDWPComposite(), JDWPCommandPayload<NewInstanceReply> {
     /**
@@ -20,9 +21,6 @@ class NewInstance : JDWPComposite(), JDWPCommandPayload<NewInstanceReply> {
      * The constructor to invoke.
      */
     var methodID by useField(JDWPMethodId())
-    /**
-     * 
-     */
     var arguments by useField(JDWPInt())
     var argumentsElements by useField(JDWPExternalVector(this::arguments, ::NewInstanceArgumentsElement))
     /**
@@ -51,6 +49,9 @@ class NewInstanceReply : JDWPComposite(), JDWPReplyPayload {
 
 
 
+/**
+ * Component for [NewInstance]
+ */
 class NewInstanceArgumentsElement : JDWPComposite() {
     /**
      * The argument value.

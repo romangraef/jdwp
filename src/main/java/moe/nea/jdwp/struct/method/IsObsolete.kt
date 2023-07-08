@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Determine if this method is obsolete. A method is obsolete if it has been replaced by a non-equivalent method using the  command. The original and redefined methods are considered equivalent if their bytecodes are the same except for indices into the constant pool and the referenced constants are equal.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_IsObsolete)
  */
 class IsObsolete : JDWPComposite(), JDWPCommandPayload<IsObsoleteReply> {
     /**

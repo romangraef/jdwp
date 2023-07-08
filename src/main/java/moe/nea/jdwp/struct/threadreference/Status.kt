@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Returns the current status of a thread. The thread status reply indicates the thread status the last time it was running. the suspend status provides information on the thread's suspension, if any.
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Status)
  */
 class Status : JDWPComposite(), JDWPCommandPayload<StatusReply> {
     /**

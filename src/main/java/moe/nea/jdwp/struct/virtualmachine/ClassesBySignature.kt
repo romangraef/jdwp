@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns reference types for all the classes loaded by the target VM which match the given signature. Multple reference types will be returned if two or more class loaders have loaded a class of the same name. The search is confined to loaded classes only; no attempt is made to load a class of the given signature.
+ * Returns reference types for all the classes loaded by the target VM which match the given signature. Multple reference types will be returned if two or more class loaders have loaded a class of the same name. The search is confined to loaded classes only; no attempt is made to load a class of the given signature. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassesBySignature)
  */
 class ClassesBySignature : JDWPComposite(), JDWPCommandPayload<ClassesBySignatureReply> {
     /**
@@ -24,12 +25,15 @@ class ClassesBySignatureReply : JDWPComposite(), JDWPReplyPayload {
      * Number of reference types that follow.
      */
     var classes by useField(JDWPInt())
-    var classesElements by useField(JDWPExternalVector(this::classes, ::ClassesBySignatureClassesElement))
+    var classesElements by useField(JDWPExternalVector(this::classes, ::ClassesBySignatureReplyClassesElement))
 }
 
 
 
-class ClassesBySignatureClassesElement : JDWPComposite() {
+/**
+ * Component for [ClassesBySignatureReply]
+ */
+class ClassesBySignatureReplyClassesElement : JDWPComposite() {
     /**
      * Kind of following reference type.
      */

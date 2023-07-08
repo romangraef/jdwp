@@ -5,7 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.struct.base.*
 
 /**
- * Returns the thread name.
+ * Returns the thread name. 
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Name)
  */
 class Name : JDWPComposite(), JDWPCommandPayload<NameReply> {
     /**

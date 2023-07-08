@@ -6,6 +6,7 @@ import moe.nea.jdwp.struct.base.*
 
 /**
  * Retrieve the method's bytecodes as defined in . Requires canGetBytecodes capability - see .
+ * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_Bytecodes)
  */
 class Bytecodes : JDWPComposite(), JDWPCommandPayload<BytecodesReply> {
     /**
@@ -24,17 +25,17 @@ class Bytecodes : JDWPComposite(), JDWPCommandPayload<BytecodesReply> {
  * Reply for [Bytecodes]
  */
 class BytecodesReply : JDWPComposite(), JDWPReplyPayload {
-    /**
-     * 
-     */
     var bytes by useField(JDWPInt())
-    var bytesElements by useField(JDWPExternalVector(this::bytes, ::BytecodesBytesElement))
+    var bytesElements by useField(JDWPExternalVector(this::bytes, ::BytecodesReplyBytesElement))
 }
 
 
 
 
-class BytecodesBytesElement : JDWPComposite() {
+/**
+ * Component for [BytecodesReply]
+ */
+class BytecodesReplyBytesElement : JDWPComposite() {
     /**
      * A Java bytecode.
      */
