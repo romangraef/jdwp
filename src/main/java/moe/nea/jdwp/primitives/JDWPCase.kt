@@ -30,6 +30,13 @@ class JDWPCase<T : JDWPElement>(
 		): JDWPCase<T> {
 			return invoke(conditionVariable, conditionValue.tag, contents)
 		}
+		operator fun <T : JDWPElement> invoke(
+			conditionVariable: KMutableProperty0<UByte>,
+			conditionValue: Byte,
+			contents: T
+		): JDWPCase<T> {
+			return invoke(conditionVariable, conditionValue.toUByte(), contents)
+		}
 	}
 
 	fun isSelected() = conditionGetter.invoke() == conditionValue
