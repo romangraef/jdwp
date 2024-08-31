@@ -10,6 +10,9 @@ jobs:
         steps:
             -   uses: actions/checkout@v4
 
+            -   name: Setup system dependencies
+                run: |
+                    sudo apt-get install python3-bs4
             -   name: Set up JDK
                 uses: actions/setup-java@v4
                 with:
