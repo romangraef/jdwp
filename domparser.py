@@ -2,12 +2,16 @@ import dataclasses
 import re
 import typing
 from pathlib import Path
-
+import urllib.request
 import bs4.element
 from bs4 import BeautifulSoup
 
-base_url = 'https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#'
-soup = BeautifulSoup(open('JDWP.html').read(), features='lxml')
+import sys
+import os
+
+base_url = os.environ['JDWP_BASE_URL'] + '#'
+source = urllib.request.urlopen(base_url).read().decode('utf-8')
+soup = BeautifulSoup(source, features='lxml')
 
 
 @dataclasses.dataclass
@@ -322,7 +326,7 @@ if __name__ == '__main__':
             emitter.emit_docs("Reply for [" + command.name + "]")
             emitter.emit_element(command.reply, name_hint=command.name + "Reply",
                                  interfaces=["JDWPReplyPayload"])
-            file = Path("src/main/java/moe/nea/jdwp/struct/") / command.parent.name.lower() / (command.name + ".kt")
+            file = Path(os.environ['GEN_BASE']) / Path("moe/nea/jdwp/struct/") / command.parent.name.lower() / (command.name + ".kt")
             file.parent.mkdir(exist_ok=True, parents=True)
             if file.exists() and '// Handwritten' in file.read_text():
                 print(f"Could not overwrite handwritten file {command.name} in {command.parent.name} in {file}")
@@ -330,4 +334,4 @@ if __name__ == '__main__':
             file.write_text(emitter.finish(), encoding='utf-8')
             if emitter.is_failing:
                 print(f"Failing for {command.name} in {command.parent.name} in {file}")
-    Path("GeneratedDocs.md").write_text(e, encoding="utf-8")
+    Path(os.environ['GEN_DOC_FILE']).write_text(e, encoding="utf-8")
