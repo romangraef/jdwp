@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the thread group that contains a given thread. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_ThreadGroup)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_ThreadGroup)
  */
 class ThreadGroup : JDWPComposite(), JDWPCommandPayload<ThreadGroupReply> {
     /**

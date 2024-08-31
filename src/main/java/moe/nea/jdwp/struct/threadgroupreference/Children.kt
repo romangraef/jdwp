@@ -5,8 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Returns the live threads and active thread groups directly contained in this thread group. Threads and thread groups in child thread groups are not included. A thread is alive if it has been started and has not yet been stopped. See [java.lang.ThreadGroup ](../../api/java.base/java/lang/ThreadGroup.html)for information about active ThreadGroups.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadGroupReference_Children)
+ * Returns the live platform threads and the thread groups directly contained in this thread group. Virtual threads are not included. Threads and thread groups in child thread groups are not included. A thread is alive if it has been started and has not yet terminated.
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadGroupReference_Children)
  */
 class Children : JDWPComposite(), JDWPCommandPayload<ChildrenReply> {
     /**

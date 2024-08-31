@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the reference type reflected by this class object.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassObjectReference_ReflectedType)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassObjectReference_ReflectedType)
  */
 class ReflectedType : JDWPComposite(), JDWPCommandPayload<ReflectedTypeReply> {
     /**
@@ -22,7 +22,7 @@ class ReflectedType : JDWPComposite(), JDWPCommandPayload<ReflectedTypeReply> {
  */
 class ReflectedTypeReply : JDWPComposite(), JDWPReplyPayload {
     /**
-     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**

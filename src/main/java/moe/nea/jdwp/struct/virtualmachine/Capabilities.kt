@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Retrieve this VM's capabilities. The capabilities are returned as booleans, each indicating the presence or absence of a capability. The commands associated with each capability will return the NOT_IMPLEMENTED error if the cabability is not available.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Capabilities)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Capabilities)
  */
 class Capabilities : JDWPComposite(), JDWPCommandPayload<CapabilitiesReply> {
     override val reply = CapabilitiesReply()

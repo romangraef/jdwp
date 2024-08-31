@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Sets the value of one or more instance fields. Each field must be member of the object's type or one of its superclasses, superinterfaces, or implemented interfaces. Access control is not enforced; for example, the values of private fields can be set. For primitive values, the value's type must match the field's type exactly. For object values, there must be a widening reference conversion from the value's type to thefield's type and the field's type must be loaded. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_SetValues)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_SetValues)
  */
 class SetValues : JDWPComposite(), JDWPCommandPayload<SetValuesReply> {
     /**

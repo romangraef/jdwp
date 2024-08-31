@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the characters contained in the string. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StringReference_Value)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StringReference_Value)
  */
 class Value : JDWPComposite(), JDWPCommandPayload<ValueReply> {
     /**

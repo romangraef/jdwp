@@ -5,8 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Returns all threads currently running in the target VM . The returned list contains threads created through java.lang.Thread, all native threads attached to the target VM through JNI, and system threads created by the target VM. Threads that have not yet been started and threads that have completed their execution are not included in the returned list. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllThreads)
+ * Returns the live threads in the target VM. Threads that have not yet started or threads that have terminated are not included in the list.
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllThreads)
  */
 class AllThreads : JDWPComposite(), JDWPCommandPayload<AllThreadsReply> {
     override val reply = AllThreadsReply()

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Releases a list of object IDs. For each object in the list, the following applies. The count of references held by the back-end (the reference count) will be decremented by refCnt. If thereafter the reference count is less than or equal to zero, the ID is freed. Any back-end resources associated with the freed ID may be freed, and if garbage collection was disabled for the object, it will be re-enabled. The sender of this command promises that no further commands will be sent referencing a freed ID.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_DisposeObjects)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_DisposeObjects)
  */
 class DisposeObjects : JDWPComposite(), JDWPCommandPayload<DisposeObjectsReply> {
     /**

@@ -10,8 +10,8 @@ This library is currently working, however:
 
 ### Implementation Coverage
 
-Currently, does not implement the Event Command Set and the Composite Event Command. This one is just too complex for my
-code generation, and will need to be manually done, and I want to finalize the primitives before that.
+All commands and their replies are generated, but only for one java version (currently Java 21). While the code generator in 
+[`domparser.py`](domparser.py) should work for other versions, I don't have a way to compile for multiple versions.
 
 ### Test Coverage
 
@@ -22,10 +22,10 @@ I could not find any issues.
 
 A lot of the packets just mirror the original Oracle documentation, which can be found at:
 
- - https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-spec.html
- - https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html
+ - https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-spec.html
+ - https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html
 
-Some of the documentation has also been inlined into [JavaDoc](https://romangraef.github.io/jdwp-protocol-lib/).
+Some of the documentation has also been inlined into [JavaDoc](https://nea89o.github.io/jdwp-protocol-lib/).
 
 The classes you will most likely start to work with is `JDWPConnection`. Even other use cases such as servers,
 can most likely be built on top of `JDWPConnection` (and if not, then the source of that should at least give you an
@@ -33,8 +33,9 @@ idea on how to do it).
 
 ## Publishing and Usage
 
-This is currently not published to any maven repository, but probably soon will be. Until then either use
-`./gradlew publishToMavenLocal` or [https://jitpack.io]
+This is currently not published to any maven repository, and probably will not ever be. Due to only working with one
+Java version, it probably makes more sense for consumers of this library to generate their own versions. And to use them
+via `./gradlew publishToMavenLocal`.
 
 ## License
 

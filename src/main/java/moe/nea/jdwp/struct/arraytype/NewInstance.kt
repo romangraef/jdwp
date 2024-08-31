@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Creates a new array object of this type with a given length.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayType_NewInstance)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayType_NewInstance)
  */
 class NewInstance : JDWPComposite(), JDWPCommandPayload<NewInstanceReply> {
     /**

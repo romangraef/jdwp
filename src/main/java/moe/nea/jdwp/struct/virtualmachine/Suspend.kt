@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Suspends the execution of the application running in the target VM. All Java threads currently running will be suspended. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Suspend)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Suspend)
  */
 class Suspend : JDWPComposite(), JDWPCommandPayload<SuspendReply> {
     override val reply = SuspendReply()

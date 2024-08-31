@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the value of the 'this' reference for this frame. If the frame's method is static or native, the reply will contain the null object reference. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_ThisObject)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_ThisObject)
  */
 class ThisObject : JDWPComposite(), JDWPCommandPayload<ThisObjectReply> {
     /**

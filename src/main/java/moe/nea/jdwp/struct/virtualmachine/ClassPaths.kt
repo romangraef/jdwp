@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Retrieve the classpath and bootclasspath of the target VM. If the classpath is not defined, returns an empty list. If the bootclasspath is not defined returns an empty list.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassPaths)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassPaths)
  */
 class ClassPaths : JDWPComposite(), JDWPCommandPayload<ClassPathsReply> {
     override val reply = ClassPathsReply()

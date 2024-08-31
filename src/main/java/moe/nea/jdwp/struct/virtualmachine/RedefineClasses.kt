@@ -5,8 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Installs new class definitions. If there are active stack frames in methods of the redefined classes in the target VM then those active frames continue to run the bytecodes of the original method. These methods are considered obsolete - see [IsObsolete](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_IsObsolete). The methods in the redefined classes will be used for new invokes in the target VM. The original method ID refers to the redefined method. All breakpoints in the redefined classes are cleared.If resetting of stack frames is desired, the [PopFrames](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_PopFrames) command can be used to pop frames with obsolete methods.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_RedefineClasses)
+ * Installs new class definitions. If there are active stack frames in methods of the redefined classes in the target VM then those active frames continue to run the bytecodes of the original method. These methods are considered obsolete - see [IsObsolete](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_IsObsolete). The methods in the redefined classes will be used for new invokes in the target VM. The original method ID refers to the redefined method. All breakpoints in the redefined classes are cleared.If resetting of stack frames is desired, the [PopFrames](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_PopFrames) command can be used to pop frames with obsolete methods.
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_RedefineClasses)
  */
 class RedefineClasses : JDWPComposite(), JDWPCommandPayload<RedefineClassesReply> {
     /**

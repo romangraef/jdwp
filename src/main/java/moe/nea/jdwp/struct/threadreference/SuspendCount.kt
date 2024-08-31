@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Get the suspend count for this thread. The suspend count is the  number of times the thread has been suspended through the thread-level or VM-level suspend commands without a corresponding resume 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_SuspendCount)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_SuspendCount)
  */
 class SuspendCount : JDWPComposite(), JDWPCommandPayload<SuspendCountReply> {
     /**

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns a range of array components. The specified range must be within the bounds of the array. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayReference_GetValues)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayReference_GetValues)
  */
 class GetValues : JDWPComposite(), JDWPCommandPayload<GetValuesReply> {
     /**

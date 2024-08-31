@@ -6,7 +6,7 @@ from pathlib import Path
 import bs4.element
 from bs4 import BeautifulSoup
 
-base_url = 'https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#'
+base_url = 'https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#'
 soup = BeautifulSoup(open('JDWP.html').read(), features='lxml')
 
 

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns reference types for all classes currently loaded by the target VM.  Both the JNI signature and the generic signature are returned for each class.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllClassesWithGeneric)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllClassesWithGeneric)
  */
 class AllClassesWithGeneric : JDWPComposite(), JDWPCommandPayload<AllClassesWithGenericReply> {
     override val reply = AllClassesWithGenericReply()
@@ -30,7 +30,7 @@ class AllClassesWithGenericReply : JDWPComposite(), JDWPReplyPayload {
  */
 class AllClassesWithGenericReplyClassesElement : JDWPComposite() {
     /**
-     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**
@@ -46,7 +46,7 @@ class AllClassesWithGenericReplyClassesElement : JDWPComposite() {
      */
     var genericSignature by useField(JDWPString())
     /**
-     * The current class [status.](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
+     * The current class [status.](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
      */
     var status by useField(JDWPInt())
 }

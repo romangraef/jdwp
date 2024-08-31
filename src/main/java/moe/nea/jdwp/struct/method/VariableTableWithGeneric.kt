@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns variable information for the method, including generic signatures for the variables. The variable table includes arguments and locals declared within the method. For instance methods, the "this" reference is included in the table. Also, synthetic variables may be present. Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTableWithGeneric)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_VariableTableWithGeneric)
  */
 class VariableTableWithGeneric : JDWPComposite(), JDWPCommandPayload<VariableTableWithGenericReply> {
     /**

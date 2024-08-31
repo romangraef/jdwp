@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Determines whether an object has been garbage collected in the target VM. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_IsCollected)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_IsCollected)
  */
 class IsCollected : JDWPComposite(), JDWPCommandPayload<IsCollectedReply> {
     /**

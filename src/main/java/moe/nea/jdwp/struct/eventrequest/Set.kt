@@ -5,16 +5,16 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Set an event request. When the event described by this request occurs, an [event](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event) is sent from the target VM. If an event occurs that has not been requested then it is not sent from the target VM. The two exceptions to this are the VM Start Event and the VM Death Event which are automatically generated events - see [Composite Command](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event_Composite) for further details.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventRequest_Set)
+ * Set an event request. When the event described by this request occurs, an [event](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event) is sent from the target VM. If an event occurs that has not been requested then it is not sent from the target VM. The two exceptions to this are the VM Start Event and the VM Death Event which are automatically generated events - see [Composite Command](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event_Composite) for further details.
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventRequest_Set)
  */
 class Set : JDWPComposite(), JDWPCommandPayload<SetReply> {
     /**
-     * Event kind to request. See [JDWP.EventKind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventKind) for a complete list of events that can be requested; some events may require a capability in order to be requested.
+     * Event kind to request. See [JDWP.EventKind](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventKind) for a complete list of events that can be requested; some events may require a capability in order to be requested.
      */
     var eventKind by useField(JDWPByte())
     /**
-     * What threads are suspended when this event occurs? Note that the order of events and command replies accurately reflects the order in which threads are suspended and resumed. For example, if a [VM-wide resume](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Resume) is processed before an event occurs which suspends the VM, the reply to the resume command will be written to the transport before the suspending event.
+     * What threads are suspended when this event occurs? Note that the order of events and command replies accurately reflects the order in which threads are suspended and resumed. For example, if a [VM-wide resume](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Resume) is processed before an event occurs which suspends the VM, the reply to the resume command will be written to the transport before the suspending event.
      */
     var suspendPolicy by useField(JDWPByte())
     /**
@@ -92,9 +92,13 @@ class SetModifiersElement : JDWPComposite() {
      */
     var InstanceOnly by useField(JDWPCase(this::modKind, 11, SetInstanceOnly()))
     /**
-     * Restricts reported class prepare events to those for reference types which have a source name which matches the given restricted regular expression. The source names are determined by the reference type's [ SourceDebugExtension](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_SourceDebugExtension). This modifier can only be used with class prepare events. Since JDWP version 1.6. Requires the canUseSourceNameFilters capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
+     * Restricts reported class prepare events to those for reference types which have a source name which matches the given restricted regular expression. The source names are determined by the reference type's [ SourceDebugExtension](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_SourceDebugExtension). This modifier can only be used with class prepare events. Since JDWP version 1.6. Requires the canUseSourceNameFilters capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
      */
     var SourceNameMatch by useField(JDWPCase(this::modKind, 12, SetSourceNameMatch()))
+    /**
+     * For thread start and thread end events, restrict the events so they are only sent for platform threads.Since JDWP version 21.
+     */
+    var PlatformThreadsOnly by useField(JDWPCase(this::modKind, 13, SetPlatformThreadsOnly()))
 }
 
 
@@ -188,7 +192,7 @@ class SetExceptionOnly : JDWPComposite() {
      */
     var caught by useField(JDWPBoolean())
     /**
-     * Report uncaught exceptions. Note that it is not always possible to determine whether an exception is caught or uncaught at the time it is thrown. See the exception event catch location under [composite events](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event_Composite) for more information.
+     * Report uncaught exceptions. Note that it is not always possible to determine whether an exception is caught or uncaught at the time it is thrown. See the exception event catch location under [composite events](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Event_Composite) for more information.
      */
     var uncaught by useField(JDWPBoolean())
 }
@@ -221,11 +225,11 @@ class SetStep : JDWPComposite() {
      */
     var thread by useField(JDWPThreadId())
     /**
-     * size of each step. See [JDWP.StepSize](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StepSize)
+     * size of each step. See [JDWP.StepSize](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StepSize)
      */
     var size by useField(JDWPInt())
     /**
-     * relative call stack limit. See [JDWP.StepDepth](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StepDepth)
+     * relative call stack limit. See [JDWP.StepDepth](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StepDepth)
      */
     var depth by useField(JDWPInt())
 }
@@ -254,4 +258,10 @@ class SetSourceNameMatch : JDWPComposite() {
     var sourceNamePattern by useField(JDWPString())
 }
 
+
+/**
+ * Component for [Set]
+ */
+class SetPlatformThreadsOnly : JDWPComposite() {
+}
 

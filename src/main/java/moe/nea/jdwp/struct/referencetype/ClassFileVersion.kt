@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the class file major and minor version numbers, as defined in the class file format of the Java Virtual Machine specification. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_ClassFileVersion)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_ClassFileVersion)
  */
 class ClassFileVersion : JDWPComposite(), JDWPCommandPayload<ClassFileVersionReply> {
     /**

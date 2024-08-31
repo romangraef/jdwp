@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the sizes of variably-sized data types in the target VM.The returned values indicate the number of bytes used by the identifiers in command and reply packets.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_IDSizes)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_IDSizes)
  */
 class IDSizes : JDWPComposite(), JDWPCommandPayload<IDSizesReply> {
     override val reply = IDSizesReply()

@@ -5,8 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Prevents garbage collection for the given object. By default all objects in back-end replies may be collected at any time the target VM is running. A call to this command guarantees that the object will not be collected. The [EnableCollection](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_EnableCollection) command can be used to allow collection once again. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_DisableCollection)
+ * Prevents garbage collection for the given object. By default all objects in back-end replies may be collected at any time the target VM is running. A call to this command guarantees that the object will not be collected. The [EnableCollection](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_EnableCollection) command can be used to allow collection once again. 
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_DisableCollection)
  */
 class DisableCollection : JDWPComposite(), JDWPCommandPayload<DisableCollectionReply> {
     /**

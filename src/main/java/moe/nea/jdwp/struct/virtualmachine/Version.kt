@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the JDWP version implemented by the target VM. The version string format is implementation dependent. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Version)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Version)
  */
 class Version : JDWPComposite(), JDWPCommandPayload<VersionReply> {
     override val reply = VersionReply()

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns reference types for all the classes loaded by the target VM which match the given signature. Multple reference types will be returned if two or more class loaders have loaded a class of the same name. The search is confined to loaded classes only; no attempt is made to load a class of the given signature. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassesBySignature)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_ClassesBySignature)
  */
 class ClassesBySignature : JDWPComposite(), JDWPCommandPayload<ClassesBySignatureReply> {
     /**
@@ -35,7 +35,7 @@ class ClassesBySignatureReply : JDWPComposite(), JDWPReplyPayload {
  */
 class ClassesBySignatureReplyClassesElement : JDWPComposite() {
     /**
-     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**
@@ -43,7 +43,7 @@ class ClassesBySignatureReplyClassesElement : JDWPComposite() {
      */
     var typeID by useField(JDWPReferenceTypeId())
     /**
-     * The current class [status.](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
+     * The current class [status.](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
      */
     var status by useField(JDWPInt())
 }

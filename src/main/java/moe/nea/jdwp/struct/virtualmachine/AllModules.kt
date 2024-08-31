@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns all modules in the target VM.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllModules)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_AllModules)
  */
 class AllModules : JDWPComposite(), JDWPCommandPayload<AllModulesReply> {
     override val reply = AllModulesReply()

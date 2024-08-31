@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the classes and interfaces directly nested within this type.Types further nested within those types are not included. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_NestedTypes)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_NestedTypes)
  */
 class NestedTypes : JDWPComposite(), JDWPCommandPayload<NestedTypesReply> {
     /**
@@ -35,7 +35,7 @@ class NestedTypesReply : JDWPComposite(), JDWPReplyPayload {
  */
 class NestedTypesReplyClassesElement : JDWPComposite() {
     /**
-     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**

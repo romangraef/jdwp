@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Sets a range of array components. The specified range must be within the bounds of the array. For primitive values, each value's type must match the array component type exactly. For object values, there must be a widening reference conversion from the value's type to thearray component type and the array component type must be loaded. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayReference_SetValues)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ArrayReference_SetValues)
  */
 class SetValues : JDWPComposite(), JDWPCommandPayload<SetValuesReply> {
     /**

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the number of instances of each reference type in the input list. Only instances that are reachable for the purposes of garbage collection are counted.  If a reference type is invalid, eg. it has been unloaded, zero is returned for its instance count.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_InstanceCounts)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_InstanceCounts)
  */
 class InstanceCounts : JDWPComposite(), JDWPCommandPayload<InstanceCountsReply> {
     /**

@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Creates a new string object in the target VM and returns its id. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CreateString)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CreateString)
  */
 class CreateString : JDWPComposite(), JDWPCommandPayload<CreateStringReply> {
     /**

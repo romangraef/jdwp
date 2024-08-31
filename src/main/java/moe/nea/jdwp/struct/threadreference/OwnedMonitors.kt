@@ -5,8 +5,8 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Returns the objects whose monitors have been entered by this thread. The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetOwnedMonitorInfo capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_OwnedMonitors)
+ * Returns the objects whose monitors have been entered by this thread. The thread must be suspended, and the returned information is relevant only while the thread is suspended. Requires canGetOwnedMonitorInfo capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_OwnedMonitors)
  */
 class OwnedMonitors : JDWPComposite(), JDWPCommandPayload<OwnedMonitorsReply> {
     /**

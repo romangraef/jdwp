@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Return the raw bytes of the constant pool in the format of the constant_pool item of the Class File Format in . 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_ConstantPool)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_ConstantPool)
  */
 class ConstantPool : JDWPComposite(), JDWPCommandPayload<ConstantPoolReply> {
     /**

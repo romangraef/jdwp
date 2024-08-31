@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns the value of one or more local variables in a given frame. Each variable must be visible at the frame's code index. Even if local variable information is not available, values can be retrieved if the front-end is able to determine the correct local variable index. (Typically, this index can be determined for method arguments from the method signature without access to the local variable table information.) 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_GetValues)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_StackFrame_GetValues)
  */
 class GetValues : JDWPComposite(), JDWPCommandPayload<GetValuesReply> {
     /**
@@ -49,7 +49,7 @@ class GetValuesSlotsElement : JDWPComposite() {
      */
     var slot by useField(JDWPInt())
     /**
-     * A [tag](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Tag) identifying the type of the variable
+     * A [tag](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_Tag) identifying the type of the variable
      */
     var sigbyte by useField(JDWPByte())
 }

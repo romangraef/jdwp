@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Terminates the target VM with the given exit code. On some platforms, the exit code might be truncated, for example, to the low order 8 bits. All ids previously returned from the target VM become invalid. Threads running in the VM are abruptly terminated. A thread death exception is not thrown and finally blocks are not run.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Exit)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Exit)
  */
 class Exit : JDWPComposite(), JDWPCommandPayload<ExitReply> {
     /**

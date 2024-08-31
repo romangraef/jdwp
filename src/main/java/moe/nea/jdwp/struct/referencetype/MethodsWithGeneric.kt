@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns information, including the generic signature if any, for each method in a reference type. Inherited methodss are not included. The list of methods will include constructors (identified with the name "<init>"), the initialization method (identified with the name "<clinit>") if present, and any synthetic methods created by the compiler. Methods are returned in the order they occur in the class file.  Generic signatures are described in the signature attribute section in . Since JDWP version 1.5.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_MethodsWithGeneric)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_MethodsWithGeneric)
  */
 class MethodsWithGeneric : JDWPComposite(), JDWPCommandPayload<MethodsWithGenericReply> {
     /**
@@ -51,7 +51,7 @@ class MethodsWithGenericReplyDeclaredElement : JDWPComposite() {
      */
     var genericSignature by useField(JDWPString())
     /**
-     * The modifier bit flags (also known as access flags) which provide additional information on the  method declaration. Individual flag values are defined in Chapter 4 of The Java Virtual Machine Specification. In addition, The 0xf0000000 bit identifies the method as synthetic, if the synthetic attribute [capability](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Capabilities) is available.
+     * The modifier bit flags (also known as access flags) which provide additional information on the  method declaration. Individual flag values are defined in Chapter 4 of The Java Virtual Machine Specification. In addition, The 0xf0000000 bit identifies the method as synthetic, if the synthetic attribute [capability](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_Capabilities) is available.
      */
     var modBits by useField(JDWPInt())
 }

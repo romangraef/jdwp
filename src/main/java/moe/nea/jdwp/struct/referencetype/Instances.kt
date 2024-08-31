@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Returns instances of this reference type. Only instances that are reachable for the purposes of garbage collection are returned. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Instances)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Instances)
  */
 class Instances : JDWPComposite(), JDWPCommandPayload<InstancesReply> {
     /**

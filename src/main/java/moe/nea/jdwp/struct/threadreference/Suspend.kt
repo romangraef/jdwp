@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Suspends the thread. 
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Suspend)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadReference_Suspend)
  */
 class Suspend : JDWPComposite(), JDWPCommandPayload<SuspendReply> {
     /**

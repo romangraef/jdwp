@@ -6,7 +6,7 @@ import moe.nea.jdwp.base.*
 
 /**
  * Removes all set breakpoints, a no-op if there are no breakpoints set.
- * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventRequest_ClearAllBreakpoints)
+ * [External](https://docs.oracle.com/en/java/javase/21/docs/specs/jdwp/jdwp-protocol.html#JDWP_EventRequest_ClearAllBreakpoints)
  */
 class ClearAllBreakpoints : JDWPComposite(), JDWPCommandPayload<ClearAllBreakpointsReply> {
     override val reply = ClearAllBreakpointsReply()
