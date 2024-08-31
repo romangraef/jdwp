@@ -9,7 +9,7 @@ import java.net.InetSocketAddress
 
 fun main() {
 	val connection = JDWPConnection.connect(
-		InetSocketAddress("127.0.0.1", 5005), JDWPPacketStore.ofPackets()
+		InetSocketAddress("127.0.0.1", 5050), JDWPPacketStore.ofPackets()
 	)
 	val versionRequest = connection.sendCommand(Version())
 	val versionReply = connection.awaitReplyBlocking(versionRequest)

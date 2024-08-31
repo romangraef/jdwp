@@ -61,6 +61,7 @@ class JDWPConnection private constructor(
     }
 
     fun <T : JDWPCommandPayload<N>, N : JDWPReplyPayload> sendCommand(payload: T): ReplyToken<N> {
+		println("Sending command $payload")
         val packet = JDWPTypedPacket(payload)
         packet.header.replyId = replyId++
         packet.header.commandSetId = payload.commandSetId

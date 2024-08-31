@@ -45,6 +45,6 @@ class JDWPExternalVector<T : Any>(
     }
 
     override fun toString(): String {
-        return "JDWPExternalVector(${sizeGetter()}; $value)"
+        return "JDWPExternalVector($value)"
     }
 }

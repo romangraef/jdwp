@@ -310,9 +310,11 @@ class Emitter:
 if __name__ == '__main__':
     struct = main()
     e = ""
+    p = "package moe.nea.jdwp\nfun JDWPPacketStore.Companion.ofAllPackets() : JDWPPacketStore = ofPackets(\n"
     for command_set in struct:
         e += f"# Package moe.nea.jdwp.struct.{command_set.name.lower()}\n\nThis package implements the [{command_set.name} Command Set]({command_set.url})\n\n"
         for command in command_set.children:
+            p += "    { moe.nea.jdwp.struct." + command.parent.name.lower() + "." + command.name + "() },\n"
             emitter = Emitter(command.name)
             emitter.emit_package_declaration("moe.nea.jdwp.struct." + command.parent.name.lower())
             emitter.emit_root_imports()
@@ -335,3 +337,4 @@ if __name__ == '__main__':
             if emitter.is_failing:
                 print(f"Failing for {command.name} in {command.parent.name} in {file}")
     Path(os.environ['GEN_DOC_FILE']).write_text(e, encoding="utf-8")
+    (Path(os.environ['GEN_BASE']) / 'moe/nea/jdwp/JDWPPacketStoreExt.kt').write_text(p + ")\n", encoding='utf-8')

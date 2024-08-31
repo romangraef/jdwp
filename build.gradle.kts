@@ -24,12 +24,12 @@ val hash = cmd("git", "rev-parse", "--short", "HEAD")!!
 val isSnapshot = tag != null && hash !in tag
 group = "moe.nea.jdwp"
 version = tag ?: hash
-
-repositories {
-	mavenLocal()
-	mavenCentral()
+allprojects {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
 }
-
 val generateStructs by tasks.register("generateStructs", GenerateStructs::class) {
 	docFile.set(layout.buildDirectory.file("GeneratedDocs.md"))
 	javaFiles.set(layout.buildDirectory.dir("generated/structs/kotlin"))
@@ -50,7 +50,7 @@ dependencies {
 }
 
 kotlin.jvmToolchain(21)
-
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 tasks.test {
 	useJUnitPlatform()
 }

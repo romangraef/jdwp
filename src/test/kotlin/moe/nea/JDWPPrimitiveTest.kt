@@ -33,6 +33,9 @@ internal class JDWPPrimitiveTest {
                 JDWPByte(0.toUByte()),
                 JDWPByte(10.toUByte()),
                 JDWPByte(128.toUByte()),
+                JDWPShort(10),
+                JDWPShort(-10),
+                JDWPShort(10000),
                 JDWPInt(-1),
                 JDWPInt(256),
                 JDWPString("testString"),
@@ -68,6 +71,7 @@ internal class JDWPPrimitiveTest {
         element.value = null
         val reader = ArrayBackedJDWPReader(writer.getResult(), JDWPIDSizes.standardSizes())
         element.read(reader)
+	    reader.assertConsumed()
         assert(element.value == oldvalue)
     }
 

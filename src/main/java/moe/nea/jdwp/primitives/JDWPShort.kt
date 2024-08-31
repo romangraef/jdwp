@@ -13,7 +13,7 @@ class JDWPShort() : JDWPSingleState<Short>() {
 
     override fun read(reader: JDWPReader) {
         val bytes = reader.consume(2)
-        value = ((bytes[0].toUInt() shl 8) or (bytes[0].toUInt())).toUShort().toShort()
+        value = ((bytes[0].toUInt() shl 8) or (bytes[1].toUInt())).toUShort().toShort()
     }
 
     override fun write(writer: JDWPWriter) {
