@@ -35,7 +35,7 @@ class ClassesBySignatureReply : JDWPComposite(), JDWPReplyPayload {
  */
 class ClassesBySignatureReplyClassesElement : JDWPComposite() {
     /**
-     * Kind of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**
@@ -43,7 +43,7 @@ class ClassesBySignatureReplyClassesElement : JDWPComposite() {
      */
     var typeID by useField(JDWPReferenceTypeId())
     /**
-     * The current class status.
+     * The current class [status.](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
      */
     var status by useField(JDWPInt())
 }

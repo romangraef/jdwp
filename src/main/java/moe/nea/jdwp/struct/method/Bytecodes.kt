@@ -5,7 +5,7 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Retrieve the method's bytecodes as defined in . Requires canGetBytecodes capability - see .
+ * Retrieve the method's bytecodes as defined in . Requires canGetBytecodes capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
  * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Method_Bytecodes)
  */
 class Bytecodes : JDWPComposite(), JDWPCommandPayload<BytecodesReply> {

@@ -37,13 +37,22 @@ class CommandBaseMeta:
 
 
 JDWPElement = typing.Union[
-    'Repetition', 'Primitive', 'Composite', typing.Literal['todo'], CommandBaseMeta]
+    'Repetition', 'Primitive', 'Composite', 'Conditional', typing.Literal['todo'], CommandBaseMeta]
 
 
 @dataclasses.dataclass
 class Repetition:
     by: str
     children: [JDWPElement]
+
+
+@dataclasses.dataclass
+class Conditional:
+    name: str
+    by: str
+    condition: str
+    children: [JDWPElement]
+    description: str
 
 
 @dataclasses.dataclass
@@ -58,6 +67,23 @@ class Composite:
     children: typing.List[JDWPElement]
 
 
+def unhref(s: str) -> str:
+    if s.startswith("#"):
+        return base_url + s[1:]
+    return s
+
+
+def read_comment(dd_element: bs4.element.PageElement) -> str:
+    if isinstance(dd_element, bs4.element.Tag):
+        text = ''
+        for child in dd_element.children:
+            text += read_comment(child)
+        if dd_element.name == "a":
+            return "[" + text + "](" + unhref(dd_element.attrs["href"]) + ")"
+        return text
+    return dd_element.text
+
+
 def read_jdwp_element_table(dd_element) -> JDWPElement:
     if dd_element.text.strip() == '(None)':
         return Composite([])
@@ -68,7 +94,8 @@ def read_jdwp_element_table(dd_element) -> JDWPElement:
     rows = list(tbody.children)[1:]
     element_stack = [[]]
     for row in rows:
-        if not row.name: continue
+        if not row.name:
+            continue
         el = row.findChildren(recursive=False)
         first_child = el[0].findChildren("div")
         if first_child:
@@ -85,12 +112,17 @@ def read_jdwp_element_table(dd_element) -> JDWPElement:
         if len(el) == 3:
             t = el[0].text.strip()
             n = el[1].text.strip()
-            d = el[2].text.strip()
-            current_object.append(Primitive(t, n, d))
+            current_object.append(Primitive(t, n, read_comment(el[2])))
         elif len(el) == 1:
             match = re.match('^Repeated ([^ ]+) times:$', el[0].text)
             child_object = []
             current_object.append(Repetition(match.group(1), child_object))
+            element_stack.append(child_object)
+        elif len(el) == 2:
+            match = re.match('^Case ([^ ]+) - if ([^ ]+) is ([^ ]+):', el[0].text.strip())
+            child_object = []
+            current_object.append(
+                Conditional(match.group(1), match.group(2), match.group(3), child_object, read_comment(el[1])))
             element_stack.append(child_object)
         else:
             return 'todo'
@@ -117,14 +149,19 @@ def main():
                 current_command = Command(command_match.group(1), command_match.group(2), base_url + child["id"],
                                           current_command_set, '', None, None)
                 current_command_set.children.append(current_command)
-        elif child.name is None:
+        elif child.name is None or child.name == "a":
             t = current_command or current_command_set
-            if t: t.docs += child.text
+            if t:
+                t.docs += read_comment(child)
         elif child.name == 'dl':
             dchildren = list(child.children)
             for dchild in dchildren:
                 if dchild.name == 'dt' and dchild.text.strip() == 'Out Data':
                     current_command.request = read_jdwp_element_table(dchild.next_sibling)
+                if dchild.name == 'dt' and dchild.text.strip() == 'Event Data':
+                    current_command.request = read_jdwp_element_table(dchild.next_sibling)
+                    if not current_command.reply:
+                        current_command.reply = Composite([])
                 if dchild.name == 'dt' and dchild.text.strip() == 'Reply Data':
                     current_command.reply = read_jdwp_element_table(dchild.next_sibling)
 
@@ -199,14 +236,25 @@ class Emitter:
         if element == "todo":
             self.is_failing = True
             return (False, "TODO()")
-        if isinstance(element, Composite):
+        elif isinstance(element, Composite):
             return (False, self.emit_composite(name_hint, element, interfaces))
-        if isinstance(element, Repetition):
+        elif isinstance(element, Conditional):
+            inner_composite = self.emit_composite(
+                self.context_prefix + element.name,
+                Composite(element.children),  # TODO: do i need ref_usesite=True
+            )
+            constant_match = re.match('^JDWP\\.([^.]+)\\.(.+)$', element.condition)
+
+            return (True, "JDWPCase(this::" + element.by + ", " +
+                    (("JDWP" + constant_match[1] + "Constants." + constant_match[2])
+                     if constant_match else element.condition)
+                    + ", " + inner_composite + ")")
+        elif isinstance(element, Repetition):
             repetition_site = self.emit_composite(
                 self.context_prefix + element.by[0].upper() + element.by[1:] + "Element",
                 Composite(element.children), ref_usesite=True)
             return (True, "JDWPExternalVector(this::" + element.by + ", " + repetition_site + ")")
-        if isinstance(element, Primitive):
+        elif isinstance(element, Primitive):
             if element.typ == "value":
                 return (False, "JDWPValue()")
             if element.typ == "tagged-objectID":
@@ -217,6 +265,8 @@ class Emitter:
                 return (False, "JDWPArrayRegion()")
             return (True, "JDWP" + re.sub('-(.)', lambda x: x.group(1).upper(),
                                           re.sub('ID$', 'Id', element.typ[0].upper() + element.typ[1:])) + "()")
+        else:
+            return None
 
     def get_name(self, element: JDWPElement):
         if hasattr(element, "name"):
@@ -274,6 +324,9 @@ if __name__ == '__main__':
                                  interfaces=["JDWPReplyPayload"])
             file = Path("src/main/java/moe/nea/jdwp/struct/") / command.parent.name.lower() / (command.name + ".kt")
             file.parent.mkdir(exist_ok=True, parents=True)
+            if file.exists() and '// Handwritten' in file.read_text():
+                print(f"Could not overwrite handwritten file {command.name} in {command.parent.name} in {file}")
+                continue
             file.write_text(emitter.finish(), encoding='utf-8')
             if emitter.is_failing:
                 print(f"Failing for {command.name} in {command.parent.name} in {file}")

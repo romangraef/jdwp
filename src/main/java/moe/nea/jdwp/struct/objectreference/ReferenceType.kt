@@ -22,7 +22,7 @@ class ReferenceType : JDWPComposite(), JDWPCommandPayload<ReferenceTypeReply> {
  */
 class ReferenceTypeReply : JDWPComposite(), JDWPReplyPayload {
     /**
-     * Kind of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**

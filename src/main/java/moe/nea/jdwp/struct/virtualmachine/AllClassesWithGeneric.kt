@@ -30,7 +30,7 @@ class AllClassesWithGenericReply : JDWPComposite(), JDWPReplyPayload {
  */
 class AllClassesWithGenericReplyClassesElement : JDWPComposite() {
     /**
-     * Kind of following reference type.
+     * [Kind](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_TypeTag) of following reference type.
      */
     var refTypeTag by useField(JDWPByte())
     /**
@@ -46,7 +46,7 @@ class AllClassesWithGenericReplyClassesElement : JDWPComposite() {
      */
     var genericSignature by useField(JDWPString())
     /**
-     * The current class status.
+     * The current class [status.](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
      */
     var status by useField(JDWPInt())
 }

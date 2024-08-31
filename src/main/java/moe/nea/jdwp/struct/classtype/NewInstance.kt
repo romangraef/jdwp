@@ -24,7 +24,7 @@ class NewInstance : JDWPComposite(), JDWPCommandPayload<NewInstanceReply> {
     var arguments by useField(JDWPInt())
     var argumentsElements by useField(JDWPExternalVector(this::arguments, ::NewInstanceArgumentsElement))
     /**
-     * Constructor invocation options
+     * Constructor invocation [options](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_InvokeOptions)
      */
     var options by useField(JDWPInt())
     override val reply = NewInstanceReply()

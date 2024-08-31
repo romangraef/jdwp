@@ -5,7 +5,7 @@ import moe.nea.jdwp.primitives.*
 import moe.nea.jdwp.base.*
 
 /**
- * Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see .
+ * Returns monitor information for an object. All threads int the VM must be suspended.Requires canGetMonitorInfo capability - see [CapabilitiesNew](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_CapabilitiesNew).
  * [External](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ObjectReference_MonitorInfo)
  */
 class MonitorInfo : JDWPComposite(), JDWPCommandPayload<MonitorInfoReply> {

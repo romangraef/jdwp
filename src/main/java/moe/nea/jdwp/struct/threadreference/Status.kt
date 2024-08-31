@@ -22,11 +22,11 @@ class Status : JDWPComposite(), JDWPCommandPayload<StatusReply> {
  */
 class StatusReply : JDWPComposite(), JDWPReplyPayload {
     /**
-     * One of the thread status codes See JDWP.ThreadStatus
+     * One of the thread status codes See [JDWP.ThreadStatus](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ThreadStatus)
      */
     var threadStatus by useField(JDWPInt())
     /**
-     * One of the suspend status codes See JDWP.SuspendStatus
+     * One of the suspend status codes See [JDWP.SuspendStatus](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_SuspendStatus)
      */
     var suspendStatus by useField(JDWPInt())
 }

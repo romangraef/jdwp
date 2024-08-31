@@ -4,6 +4,7 @@ import moe.nea.jdwp.JDWPConnection
 import moe.nea.jdwp.JDWPPacketStore
 import moe.nea.jdwp.struct.virtualmachine.AllClassesWithGeneric
 import moe.nea.jdwp.struct.virtualmachine.Version
+import java.io.File
 import java.net.InetSocketAddress
 
 fun main() {
@@ -12,8 +13,6 @@ fun main() {
     )
     val versionRequest = connection.sendCommand(Version())
     val versionReply = connection.awaitReplyBlocking(versionRequest)
-    println(versionReply)
     val generic = connection.awaitReplyBlocking(connection.sendCommand(AllClassesWithGeneric()))
-    println(generic)
-
+    File("classes.txt").writeText(generic.classesElements.joinToString("\n") { it.genericSignature + " " + it.signature })
 }

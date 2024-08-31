@@ -49,7 +49,7 @@ class GetValuesSlotsElement : JDWPComposite() {
      */
     var slot by useField(JDWPInt())
     /**
-     * A tag identifying the type of the variable
+     * A [tag](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_Tag) identifying the type of the variable
      */
     var sigbyte by useField(JDWPByte())
 }

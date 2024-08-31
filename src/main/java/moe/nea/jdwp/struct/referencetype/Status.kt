@@ -22,7 +22,7 @@ class Status : JDWPComposite(), JDWPCommandPayload<StatusReply> {
  */
 class StatusReply : JDWPComposite(), JDWPReplyPayload {
     /**
-     * Status bits:See JDWP.ClassStatus
+     * [Status](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus) bits:See [JDWP.ClassStatus](https://docs.oracle.com/en/java/javase/17/docs/specs/jdwp/jdwp-protocol.html#JDWP_ClassStatus)
      */
     var status by useField(JDWPInt())
 }
