@@ -45,7 +45,7 @@ fun main() {
 class JDWPRemapServer(down: Socket, up: Socket, packetStore: JDWPPacketStore) : JDWPTransServer(down, up, packetStore) {
 	// TODO: do something
 	val mappingIO = kotlin.run {
-		val tree = MemoryMappingTree()
+		val tree = MemoryMappingTree(true)
 		MappingReader.read(
 			Path.of("/home/nea/.gradle/caches/fabric-loom/1.21/net.fabricmc.yarn.1_21.1.21+build.2-v2/mappings.tiny"),
 			tree)

@@ -137,6 +137,10 @@ sealed interface Signature {
 		val classBound: ReferenceTypeSignature?,
 		val interfaceBound: List<ReferenceTypeSignature>
 	) : Signature {
+		init {
+			require(classBound != null || interfaceBound.isNotEmpty())
+		}
+
 		override fun toString(): String {
 			val classBoundOrEmpty = classBound?.toString() ?: ""
 			val interfaces = interfaceBound.joinToString("") { ":$it" }
