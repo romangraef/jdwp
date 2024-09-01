@@ -6,16 +6,13 @@ import moe.nea.jdwp.JDWPInputStreamReader
 import moe.nea.jdwp.JDWPOutputStreamWriter
 import moe.nea.jdwp.JDWPPacketStore
 import moe.nea.jdwp.base.JDWPPacket
-import moe.nea.jdwp.base.JDWPPayload
 import moe.nea.jdwp.base.JDWPReplyPayload
 import moe.nea.jdwp.base.JDWPTypedPacket
 import moe.nea.jdwp.base.JDWPUntypedPacket
 import moe.nea.jdwp.base.PacketHeader
 import moe.nea.jdwp.ofAllPackets
 import moe.nea.jdwp.primitives.JDWPHandshake
-import moe.nea.jdwp.struct.virtualmachine.AllClassesReply
 import moe.nea.jdwp.struct.virtualmachine.AllClassesWithGeneric
-import moe.nea.jdwp.struct.virtualmachine.AllClassesWithGenericReply
 import moe.nea.jdwp.struct.virtualmachine.IDSizesReply
 import moe.nea.jdwp.struct.virtualmachine.Version
 import java.io.File
@@ -26,29 +23,8 @@ import java.util.Collections
 import kotlin.concurrent.thread
 import kotlin.system.exitProcess
 
-fun writeClasses() {
-	val connection = JDWPConnection.connect(
-		InetSocketAddress("127.0.0.1", 5050), JDWPPacketStore.ofPackets()
-	)
-	val versionRequest = connection.sendCommand(Version())
-	val versionReply = connection.awaitReplyBlocking(versionRequest)
-	val generic = connection.awaitReplyBlocking(connection.sendCommand(AllClassesWithGeneric()))
-	File("classes.txt").writeText(generic.classesElements.joinToString("\n") { it.genericSignature + " " + it.signature })
-	exitProcess(0)
-}
 
-fun main() {
-	val server = ServerSocket(5050)
-	thread(start = true) { writeClasses() }
-	while (true) {
-		val down = server.accept()
-		val up = Socket()
-		up.connect(InetSocketAddress("localhost", 5006))
-		JDWPTransServer(down, up, JDWPPacketStore.ofAllPackets()).start()
-	}
-}
-
-class JDWPTransServer(
+abstract class JDWPTransServer(
 	val down: Socket,
 	val up: Socket,
 	val packetStore: JDWPPacketStore,
@@ -85,62 +61,28 @@ class JDWPTransServer(
 	fun pushDownToUpOnce() {
 		println("Trying to push down to up")
 		val packet = readPacketG(downRead, downReplyIds, upReplyIds, packetStore, Dir.DOWNTOUP)
-		wrapPacket(packet)
+		wrapPacket(packet, Dir.DOWNTOUP)
 		packet.write(upWrite)
 	}
 
 	fun pushUpToDownOnce() {
 		println("Trying to push up to down")
 		val packet = readPacketG(upRead, upReplyIds, downReplyIds, packetStore, Dir.UPTODOWN)
-		wrapPacket(packet)
+		wrapPacket(packet, Dir.UPTODOWN)
 		packet.write(downWrite)
 	}
 
-	fun wrapPacket(packet: JDWPPacket) {
-		if (packet !is JDWPTypedPacket<*>) return
-		if (packet.contents is IDSizesReply) {
+	abstract fun mapPacket(packet: JDWPPacket, dir: Dir): JDWPPacket
+
+	fun wrapPacket(packet: JDWPPacket, dir: Dir): JDWPPacket {
+		if (packet is JDWPTypedPacket<*> && packet.contents is IDSizesReply) {
 			val sizes: IDSizesReply = packet.contents as IDSizesReply
 			upWrite.sizes.setFrom(sizes)
 			upRead.sizes.setFrom(sizes)
 			downWrite.sizes.setFrom(sizes)
 			downRead.sizes.setFrom(sizes)
 		}
-		wrap(packet.contents)
-	}
-
-	fun wrap(payload: JDWPPayload) {
-		when (payload) {
-			is AllClassesReply -> {
-				payload.classesElements = payload.classesElements.map {
-					it.signature = mapClassSignature(Signature.parse(it.signature))
-					it
-				}
-			}
-
-			is AllClassesWithGenericReply -> {
-				payload.classesElements = payload.classesElements.map {
-					it.signature = mapClassSignature(Signature.parse(it.signature))
-					if (it.genericSignature.isNotEmpty())
-						it.genericSignature = mapClassSignature(Signature.parseGeneric(it.genericSignature))
-					it
-				}
-			}
-		}
-	}
-
-	fun mapClassSignature(signature: Signature): String {
-		return mapSignature(signature).toString()
-	}
-
-	fun <T : Signature> mapSignature(signature: T): T {
-		return when (signature) {
-			else -> signature
-		} as T
-	}
-
-	private fun mapSlashClassName(className: String): String {
-		println("Original class name $className")
-		return className
+		return mapPacket(packet, dir)
 	}
 
 	enum class Dir {
