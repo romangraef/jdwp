@@ -106,12 +106,11 @@ class JDWPRemapServer(down: Socket, up: Socket, packetStore: JDWPPacketStore) : 
 				val newName = mappingIO.mapClassName(
 					if (isLambda) baseName.dropLast(lambdaSuffix.length) else baseName,
 					fromNs(dir), toNs(dir)) + if (isLambda) lambdaSuffix else ""
-				val parts = newName.split("/")
-				val packageParts = parts.asSequence().take(parts.size - 1).map { Signature.Identifier(it) }.toList()
+				val lastSlash = newName.lastIndexOf('/')
 				Signature.ClassTypeSignature(
-					Signature.PackageSpecifier(packageParts),
+					Signature.PackageSpecifier(newName.substring(0, lastSlash + 1)),
 					Signature.SimpleClassTypeSignature(
-						Signature.Identifier(parts.last()),
+						Signature.Identifier(newName.substring(lastSlash + 1)),
 						mapClass(signature.clazz.typeArguments, dir)),
 					signature.appendages.map { mapClass(it, dir) }
 				)

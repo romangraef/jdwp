@@ -85,10 +85,14 @@ sealed interface Signature {
 	}
 
 	data class PackageSpecifier(
-		val slashedPackageName: List<Identifier>
+		val slashedPackageName: String
 	) : Signature {
+		init {
+			require(slashedPackageName.isEmpty() || slashedPackageName.endsWith("/")) { "$slashedPackageName does not end with /" }
+		}
+
 		override fun toString(): String {
-			return slashedPackageName.joinToString("/", postfix = "/")
+			return slashedPackageName
 		}
 	}
 
@@ -245,20 +249,11 @@ class SignatureParser(val racer: StringRacer) {
 	}
 
 	fun parsePackageSpecifier(): Signature.PackageSpecifier {
-		racer.pushState()
-		val segments = buildList {
-			while (true) {
-				racer.discardState()
-				racer.pushState()
-				val ident = parseIdentifier()
-				if (!racer.tryConsume("/")) {
-					break
-				}
-				add(ident)
-			}
-		}
-		racer.popState()
-		return Signature.PackageSpecifier(segments)
+		val endOfClass = racer.backing.indexOfAny(":;.><".toCharArray(), racer.idx)
+		if (endOfClass < 0) racer.error("Could not find end of class while parsing package")
+		val packageEnd = racer.backing.lastIndexOf('/', endOfClass)
+		if (packageEnd < racer.idx) return Signature.PackageSpecifier("")
+		return Signature.PackageSpecifier(racer.consumeCountReq(packageEnd - racer.idx + 1)!!)
 	}
 
 	fun parseSimpleClassTypeSignature(): Signature.SimpleClassTypeSignature {
