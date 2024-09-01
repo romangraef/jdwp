@@ -18,12 +18,17 @@ class StringRacer(val backing: String) {
 		stack.pop()
 	}
 
+	fun peekChar(): Char? {
+		return if (idx in backing.indices) backing[idx]
+		else null
+	}
+
 	fun peek(count: Int): String {
 		return backing.substring(minOf(idx, backing.length), minOf(idx + count, backing.length))
 	}
 
 	fun finished(): Boolean {
-		return peek(1).isEmpty()
+		return peekChar() == null
 	}
 
 	fun peekReq(count: Int): String? {
@@ -45,6 +50,7 @@ class StringRacer(val backing: String) {
 	}
 
 	fun tryConsume(string: String): Boolean {
+		// TODO: improve performance of this
 		val p = peek(string.length)
 		if (p != string)
 			return false
@@ -52,15 +58,27 @@ class StringRacer(val backing: String) {
 		return true
 	}
 
-	fun consumeWhile(shouldConsumeThisString: (String) -> Boolean): String {
-		var lastString: String = ""
+	fun consumeUntil(charArray: CharArray): String {
+		val limit = backing.indexOfAny(charArray, idx)
+		val oldIdx = idx
+		if (limit < 0) {
+			idx = backing.length
+			return backing.substring(oldIdx, backing.length)
+		}
+		idx = limit
+		return backing.substring(oldIdx, limit)
+	}
+
+	fun consumeWhile(shouldConsumeThisString: (CharSequence) -> Boolean): CharSequence {
+		val lastString = StringBuilder()
 		while (true) {
-			val nextString = lastString + peek(1)
-			if (!shouldConsumeThisString(nextString)) {
+			val c = peekChar() ?: return lastString.toString()
+			lastString.append(c)
+			if (!shouldConsumeThisString(lastString)) {
+				lastString.setLength(maxOf(0, lastString.length - 1))
 				return lastString
 			}
 			idx++
-			lastString = nextString
 		}
 	}
 

@@ -167,7 +167,7 @@ class SignatureParser(val racer: StringRacer) {
 		val typeParameters = parseTypeParameters()
 		val superClassSignature = parseClassTypeSignature()
 		val superInterfaceSignatures = buildList {
-			while (racer.peek(1) == "L")
+			while (racer.peekChar() == 'L')
 				add(parseClassTypeSignature())
 		}
 		return Signature.ClassSignature(typeParameters, superClassSignature, superInterfaceSignatures)
@@ -186,7 +186,7 @@ class SignatureParser(val racer: StringRacer) {
 	fun parseTypeParameter(): Signature.TypeParameter {
 		val ident = parseIdentifier()
 		racer.expect(":", "Expected : after type identifierin TypeParameter")
-		val classBound = if (racer.peek(1) != ":")
+		val classBound = if (racer.peekChar() != ':')
 			parseReferenceTypeSignature() else null
 		val interfaceBound = buildList {
 			while (racer.tryConsume(":"))
@@ -195,11 +195,12 @@ class SignatureParser(val racer: StringRacer) {
 		return Signature.TypeParameter(ident, classBound, interfaceBound)
 	}
 
+	companion object {
+		private val nonIdentifierChars = ":;/.><".toCharArray()
+	}
+
 	fun parseIdentifier(): Signature.Identifier {
-		return Signature.Identifier(racer.consumeWhile {
-			val last = it.last()
-			last !in ":;/.><"
-		}.also {
+		return Signature.Identifier(racer.consumeUntil(nonIdentifierChars).also {
 			if (it.isEmpty()) racer.error("Expected identifier")
 		})
 	}
@@ -280,21 +281,21 @@ class SignatureParser(val racer: StringRacer) {
 	}
 
 	fun parseReferenceTypeSignature(): Signature.ReferenceTypeSignature {
-		return when (racer.peek(1)) {
-			"L" -> parseClassTypeSignature()
-			"T" -> parseTypeVariableSignature()
-			"[" -> parseArrayTypeSignature()
+		return when (racer.peekChar()) {
+			'L' -> parseClassTypeSignature()
+			'T' -> parseTypeVariableSignature()
+			'[' -> parseArrayTypeSignature()
 			else -> racer.error("Expected ReferenceTypeSignature")
 		}
 	}
 
 	fun amIPeekingAReferenceTypeSignature(): Boolean {
-		return racer.peek(1) in "LT["
+		return (racer.peekChar() ?: return false) in "LT["
 	}
 
 	fun parseJavaTypeSignature(): Signature.JavaTypeSignature {
 		if (amIPeekingAReferenceTypeSignature()) return parseReferenceTypeSignature()
-		val p = racer.peek(1).singleOrNull()
+		val p = racer.peekChar()
 		val baseType = Signature.BaseType.byDesc[p]
 			?: racer.error("Expected a JavaTypeSignature")
 		racer.advance(1)

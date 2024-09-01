@@ -2,7 +2,7 @@
 
 package moe.nea.jdwp
 
-class ArrayBackedJDWPWriter(override val sizes: JDWPIDSizes, sizeHint: Int = 0) : JDWPWriter {
+class ArrayBackedJDWPWriter(override val sizes: JDWPIDSizes, sizeHint: Int = 0, val loadFactor: Float = 0.75F) : JDWPWriter {
     var buffer = UByteArray(sizeHint)
     var size = 0
 
@@ -12,7 +12,9 @@ class ArrayBackedJDWPWriter(override val sizes: JDWPIDSizes, sizeHint: Int = 0) 
 
     fun ensureFreeCapacity(requiredCap: Int) {
         if (size + requiredCap < buffer.size) return
-        buffer = buffer.copyOf(buffer.size + (requiredCap + 1).coerceAtLeast(MIN_INCREASE))
+        buffer = buffer.copyOf(buffer.size + (buffer.size * loadFactor).toInt()
+	        .coerceAtLeast(MIN_INCREASE)
+	        .coerceAtLeast(requiredCap))
     }
 
     fun getResult(): UByteArray {
